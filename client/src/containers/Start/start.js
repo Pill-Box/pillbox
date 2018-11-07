@@ -11,19 +11,19 @@ class Start extends React.Component {
            <br />
             <div className='row'>
                 <div className='col-md-12'>
-                    <h3 className='boxStyle'>Log-in</h3>
+                <a href='/login'><h3 className='boxStyle'>Log-in</h3></a>
                 </div>
             </div>
             <br />
             <div className='row'>
                 <div className='col-md-12'>
-                    <h3 className='boxStyle'>Sign-up</h3>
+                <a href='/signup'> <h3 className='boxStyle'>Sign-up</h3></a>
                 </div>
             </div>
             <br />
             <div className='row'>
                 <div className='col-md-12'>
-                    <h3 className='boxStyle'>Info</h3>
+                <a href='/info'> <h3 className='boxStyle'>Info</h3></a>
                 </div>
             </div>
             </div>

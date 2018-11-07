@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const RxRoutes = require("./Rxs");
+// const RxRoutes = require("./Rxs");
 
 // Rx routes
 router.use("/Rxs", RxRoutes);

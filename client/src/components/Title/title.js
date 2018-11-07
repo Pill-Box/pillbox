@@ -7,7 +7,7 @@ class Title extends React.Component{
 <Navbar>
   <Navbar.Header>
    <h1><i>pillbox</i></h1>
-  </Navbar.Header>
+    </Navbar.Header>
   {/* <Nav> */}
     {/* <NavItem eventKey={1} href="#">
       Link
