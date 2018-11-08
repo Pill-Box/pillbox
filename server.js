@@ -13,10 +13,18 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-}
+};
+app.use(flash());
+
+/////Passport Middleware via documentation
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));	
+app.use(passport.initialize());
+app.use(passport.session());	// persistent login sessions
 
 // Requiring our models for syncing
 var db = require("./models");
+//	Import Passport Strategies
+require('./config/passport')(passport, models.patient);
 
 // Add routes, both API and view
 app.use(routes);

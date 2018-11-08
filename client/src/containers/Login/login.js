@@ -2,30 +2,40 @@ import React from 'react'
 import './login.css'
 import FieldGroup from '../../components/Fieldgroup'
 import Title from '../../components/Title/title'
+import { Redirect } from 'react-router-dom'
 
 
 class Login extends React.Component {
     state = {
         username: '',
-        password: ''
-    }
+        password: '',
+        redirect: false
+     }
 
     handleInput = e => {
         const { name, value } = e.target
         this.setState({ [name]: value })
-    }
-
+            }
 
     handleSubmit = e => {
         e.preventDefault()
         const { username, password } = this.state
         console.log(`Username ${username}`)
         console.log(`Password is ${password}`)
+        //Possibly hook up passport here?
+        if (this.state.username && this.state.password !=='') { 
+            console.log('Click')
+            this.setState({ redirect: true})
+          }
     }
 
 
     render() {
- 
+        if (this.state.redirect === true) {
+            return <Redirect to='/dashboard' />
+          }
+      
+
         return (
             <div>
                 <Title />
@@ -62,6 +72,8 @@ class Login extends React.Component {
                     </div>
                     <br />
                     <input id='submit' type='submit' value='SUBMIT' onClick={this.handleSubmit} />
+                    <br />
+                  <p>Forgot your password?{'    '}<a href='/reset'>Reset it!</a></p>
                 </div>
             </div>
         )
