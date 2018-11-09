@@ -1,0 +1,30 @@
+.signup {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(
+        to right,
+    #038197,
+    #00B5A8,
+    #009AA0);
+    color: white;
+    font-size: 20px;
+    width: 70%;
+    text-align: center;
+    border-radius: 3px;
+    padding: 10px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+  }
+
+  .first {
+      margin-bottom: 10px;
+  }
+
+  input#password.form-control {
+    border: none;
+    border-radius: 2px;
+    padding: 10px;
+}
+  

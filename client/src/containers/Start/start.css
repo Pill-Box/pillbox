@@ -17,6 +17,10 @@
     margin-right: auto;
 }
 
+.boxStyle:hover {
+    opacity: .7;
+}
+
 h1 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
