@@ -18,5 +18,5 @@ module.exports = {
         .create(Rx)
         .then(dbRx => res.json(dbRx))
         .catch(err => res.status(422).json(err));
-},
+  },
 };
