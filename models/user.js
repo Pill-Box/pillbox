@@ -1,18 +1,22 @@
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('user', {
-    username: {
-      type: Sequelize.STRING,
+    user_id: {
+      type: DataTypes.INT,
+      notEmpty: true
+    },
+    user_name: {
+      type: DataTypes.STRING,
       notEmpty: true
     },
     email: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       notEmpty: true,
       validate: {
         isEmail: true
       }
     },
     hashed_password: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     name_first: {
@@ -29,9 +33,9 @@ module.exports = (sequelize, DataTypes) => {
         len: [35]
       }
     },
-    status: {
-			type: Sequelize.ENUM('active', 'inactive'),
-			defaultValue: 'active'
+    active: {
+			type: DataType.Boolean,
+			defaultValue: 1
 		}
 
   });
@@ -40,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Rx, {
       onDelete: "cascade"
     });
+    
   };
 
   return User;

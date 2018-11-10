@@ -1,6 +1,7 @@
 import React from 'react'
 import Title from '../../components/Title/title'
 import FieldGroup from '../../components/Fieldgroup'
+import { Redirect } from 'react-router-dom'
 import './signup.css'
 
 class SignUp extends React.Component {
@@ -8,7 +9,8 @@ class SignUp extends React.Component {
         username: '',
         password: '',
         firstName: '',
-        lastName: ''
+        lastName: '',
+        redirect: false
     }
 
     handleInput = e => {
@@ -16,15 +18,23 @@ class SignUp extends React.Component {
         this.setState({ [name]: value })
     }
 
-
     handleSubmit = e => {
         e.preventDefault()
         const { username, password, firstName, lastName } = this.state
         console.log(`Username ${username}`)
         console.log(`Password is ${password}`)
+        console.log(`Name is ${firstName} ${lastName}`)
+        /////////////THIS NEEDS TO BE HOOKED UP TO PASSPORT
+        if (this.state.username && this.state.password && this.state.firstName && this.state.lastName !== '') {
+            this.setState({ redirect: true })
+        }
     }
 
     render() {
+        if (this.state.redirect === true) {
+            return <Redirect to='/login' />
+        }
+
         return (
             <div>
                 <Title />

@@ -1,0 +1,15 @@
+.card {
+    font-family: 'Montserrat', sans-serif;
+    padding: 20px;
+    opacity: .9;
+}
+
+.card-header {
+    font-style: italic;
+    font-size: 25px;
+}
+
+.card-body {
+    margin-top: 5px;
+    font-size: 15px;
+}

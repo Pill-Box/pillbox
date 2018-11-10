@@ -2,14 +2,6 @@
     text-align: left; 
 }
 
-img {
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    box-sizing: border-box;
-    background:white;
-    border-radius: 2px;
-}
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 
