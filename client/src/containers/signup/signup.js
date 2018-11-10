@@ -28,16 +28,9 @@ class SignUp extends React.Component {
         return (
             <div>
                 <Title />
-                <div className='signup'>
-                        <div className='row'>
-                    <div className='col-md-12'>
-                        <p>Getting signed up for pillBox is easy! 
-                        Simply fill out the information below.</p>
-                    </div>
-                </div>
-                </div>
-                <div className='row signup'>
-                    <div className='col-md-6' >First Name and Last Name</div>
+                <div className='signup bbstyle'>
+                <h3 id='login'>SIGN UP</h3>
+                <div className='row'>
                     <div className='col-md-3'>
                         <form className='inputForm first' >
                             <FieldGroup
@@ -48,7 +41,7 @@ class SignUp extends React.Component {
                                 placeholder='First Name'
                             />
                         </form>
-                    </div> 
+                    </div>
                     <div className='col-md-3 last'>
                         <form className='inputForm' >
                             <FieldGroup
@@ -61,8 +54,8 @@ class SignUp extends React.Component {
                         </form>
                     </div>
                 </div>
-                <div className='row signup'>
-                    <div className='col-md-6' >Choose a username</div>
+                <br/>
+                <div className='row'>
                     <div className='col-md-6'>
                         <form className='inputForm' >
                             <FieldGroup
@@ -75,8 +68,8 @@ class SignUp extends React.Component {
                         </form>
                     </div>
                 </div>
-                <div className='row signup'>
-                    <div className='col-md-6' >Password</div>
+                <br/>
+                <div className='row'>
                     <div className='col-md-3'>
                         <form className='inputForm first' >
                             <FieldGroup
@@ -101,9 +94,9 @@ class SignUp extends React.Component {
                         <input id='submit' type='submit' value='SUBMIT' onClick={this.handleSubmit} />
                     </div>
                 </div>
-              
+             </div>
             </div>
-            
+
         )
     }
 }
