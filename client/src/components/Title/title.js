@@ -6,7 +6,7 @@ class Title extends React.Component{
         return (
 <Navbar>
   <Navbar.Header>
-   <a href='/'><h1><i>pillBox</i></h1></a>
+   <a className="title" href='/'><h1><i>pillBox</i></h1></a>
     </Navbar.Header>
   {/* <Nav> */}
     {/* <NavItem eventKey={1} href="#">
