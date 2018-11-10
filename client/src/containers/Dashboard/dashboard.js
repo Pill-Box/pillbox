@@ -28,7 +28,7 @@ class Dashboard extends React.Component {
                         )}
                     </div>
                 </div>
-                {/*  <TabScreens /> */}
+                 <TabScreens />
             </div>
         )
     }
