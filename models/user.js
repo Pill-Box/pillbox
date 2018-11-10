@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-  var User = sequelize.define('user', {
+  var User = sequelize.define('User', {
     user_id: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       notEmpty: true
     },
     user_name: {
@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     active: {
-			type: DataType.Boolean,
+			type: DataTypes.BOOLEAN,
 			defaultValue: 1
 		}
 
