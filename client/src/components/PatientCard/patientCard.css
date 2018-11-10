@@ -2,6 +2,7 @@
     font-family: 'Montserrat', sans-serif;
     padding: 20px;
     opacity: .9;
+<<<<<<< HEAD
 }
 
 .card-header {
@@ -12,4 +13,12 @@
 .card-body {
     margin-top: 5px;
     font-size: 15px;
+=======
+    background: linear-gradient(
+        to right,
+    #038197,
+    #00B5A8,
+    #009AA0);
+    border-radius: 10px;
+>>>>>>> 3605c1abff8aa4b1910787ea35b64fa26ac3cf86
 }
