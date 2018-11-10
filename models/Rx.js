@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Rx = sequelize.define("Rx", {
         user_id: {
-            type: DataTypes.INT
+            type: DataTypes.INTEGER
         },
         drug_name: {
             type: DataTypes.STRING,
@@ -11,11 +11,11 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         refills: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         dispensed_qty: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         frequency: {
@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         frequency_num: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         time_of_day: {
