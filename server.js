@@ -24,7 +24,7 @@ app.use(passport.session());	// persistent login sessions
 // Requiring our models for syncing
 var db = require("./models");
 //	Import Passport Strategies
-require('./config/passport')(passport, models.patient);
+require('./config/passport')(passport, models.user);
 
 // Add routes, both API and view
 app.use(routes);
