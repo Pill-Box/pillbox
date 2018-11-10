@@ -1,5 +1,6 @@
 import React from 'react'
 import TabScreens from '../../components/Sidebar/bottomBar'
+import Title from '../../components/Title/title'
 import Card from '../../components/PatientCard/patientCard'
 import patients from '../../components/tempName.json'
 import './dashboard.css'
@@ -9,10 +10,10 @@ class Dashboard extends React.Component {
 
     render() {
         return (
-            <body className='body'>
-            <div>
-                <div className='row'>
-                    <div className='col-md-12'>
+            <div className="dashboard-body gradient-background">
+                <Title/>
+                <div className='row dashboard'>
+                    <div className='col-md-12 patient-cards'>
                         {patients.map(patient => (
                             <Card
                                 id={patient.id}
@@ -29,7 +30,6 @@ class Dashboard extends React.Component {
                 </div>
                 {/*  <TabScreens /> */}
             </div>
-</body>
         )
     }
 }

@@ -38,7 +38,9 @@ class Login extends React.Component {
 
         return (
             <div>
-                <Title />
+             <div className="gradient-background">
+                    <Title />
+                </div>
                 <div className='bbstyle'>
                     <h3 id='login'>LOG IN</h3>
                     <div className='row'>
