@@ -55,7 +55,7 @@ h1 {
 }
 
 .gradient-background {
-    background: linear-gradient(to right, rgba(0,192,173,0.9) 0%, rgba(0,127,152,0.9) 100%);
+    background: linear-gradient(135deg, rgb(4, 188, 230) 0%, rgba(4,164,200,1) 1%, rgba(3,113,150,1) 100%);
 }
 
 /* INPUT ELEMENT STYLING */
