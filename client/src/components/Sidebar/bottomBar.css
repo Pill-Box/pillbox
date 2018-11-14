@@ -1,0 +1,26 @@
+.bottomNav {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+    border-top: 1px solid black;
+}
+
+.col-md-3 {
+    float: left;
+    width: 25%;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.col-md-3:hover {
+    opacity: .7;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
