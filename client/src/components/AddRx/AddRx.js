@@ -1,39 +1,12 @@
 import React, { Component } from "react";
-import TabScreens from '../../components/Sidebar/bottomBar'
-import './addRx.css'
 
 class AddRx extends Component {
-
-    state = {
-        drugName: "",
-        ndc: "",
-        refills: "",
-        quantityDispensed: "",
-        sig: "",
-        frequency: "",
-        timeOfDay: "",
-        pharmacist: "",
-        pharmacyContact: "",
-        prescriber: "",
-        prescriberContact: "",
-        notes: ""
-    };
-
-    handleInputChange = event => {
-        const {name, value} = event.target
-
-        this.setState({
-            [name]: value
-        })
-    }
 
     handleFormSubmit = event => {
         event.preventDefault();
     
-        const {name,value} = event.target;
-
         this.setState({
-            [name]: value
+    
         });
       };
     
@@ -113,10 +86,10 @@ class AddRx extends Component {
                         <button onClick={this.handleFormSubmit} className="btn btn-primary getRxData">Submit</button>
                     </div>
                 </div>
-                <TabScreens />
             </div>
-        ) //return
-    } //render
+        )
+    }
 }
 
-export default AddRx
+export default AddRx;
+ 
