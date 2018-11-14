@@ -10,13 +10,13 @@ class TabScreens extends React.Component {
                         <a href='/dashboard'><i class="fas fa-home"></i></a>
                     </div>
                     <div className='col-md-3'>
-                        <i class="fas fa-prescription-bottle-alt"></i>
+                        <a href='/addRx'><i class="fas fa-prescription-bottle-alt"></i></a>
                     </div>
                     <div className='col-md-3'>
-                        <i class="fas fa-users"></i>
+                        <a href='/addpatient'><i class="fas fa-users"></i></a>
                     </div>
                     <div className='col-md-3'>
-                    <i class="fas fa-sign-out-alt"></i>
+                        <a href='/signout'><i class="fas fa-sign-out-alt"></i></a>
                     </div>
                 </div>
             </div>
