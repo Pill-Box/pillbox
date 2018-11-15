@@ -38,7 +38,7 @@ class SignUp extends React.Component {
         return (
             <div>
                 <Title />
-                <div className='signup bbstyle'>
+                <div className='signup bbstyle container'>
                 <h3 id='login'>SIGN UP</h3>
                 <div className='row'>
                     <div className='col-md-3'>
@@ -52,6 +52,7 @@ class SignUp extends React.Component {
                             />
                         </form>
                     </div>
+                    <br/>
                     <div className='col-md-3 last'>
                         <form className='inputForm' >
                             <FieldGroup
@@ -63,6 +64,7 @@ class SignUp extends React.Component {
                             />
                         </form>
                     </div>
+                    <br/>
                 </div>
                 <br/>
                 <div className='row'>
