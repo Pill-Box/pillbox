@@ -3,9 +3,9 @@ module.exports = function(sequelize, DataTypes) {
         drug_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-              len: [75]
-            }
+        },
+        ndc: {
+            type: DataTypes.STRING,
         },
         refills: {
             type: DataTypes.INTEGER,
@@ -17,10 +17,6 @@ module.exports = function(sequelize, DataTypes) {
         },
         frequency: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        frequency_num: {
-            type: DataTypes.INTEGER,
             allowNull: false
         },
         time_of_day: {
@@ -39,6 +35,9 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING
         },
         prescriber: {
+            type: DataTypes.STRING
+        },
+        prescriber_number: {
             type: DataTypes.STRING
         }
    });
