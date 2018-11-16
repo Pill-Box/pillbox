@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     email: {
       type: DataTypes.STRING,
-      notEmpty: true,
+      allowNull: true,
       validate: {
         isEmail: true
       }
@@ -30,11 +30,12 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     active: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: 1
-		}
+      type: DataTypes.BOOLEAN,
+      defaultValue: 1
+    }
 
   });
- 
+
   return User;
+
 };
