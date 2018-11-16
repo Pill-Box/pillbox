@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import TabScreens from '../../components/Sidebar/bottomBar'
 import './addRx.css'
 
@@ -30,11 +31,28 @@ class AddRx extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
     
-        const {name,value} = event.target;
+        // const {name,value} = event.target;
 
-        this.setState({
-            [name]: value
+        axios.post('/api/Rxs', {
+            drug_name: this.state.drugName,
+            ndc: this.state.ndc,
+            refills: this.state.refills,
+            dispensed_qty: this.state.quantityDispensed,
+            sig: this.state.sig,
+            frequency: this.state.frequency,
+            time_of_day: this.state.timeOfDay,
+            pharmacist: this.state.pharmacist,
+            pharmacy_number: this.state.pharmacyContact,
+            prescriber: this.state.prescriber,
+            prescriber_number: this.state.prescriberContact,
+            UserId: 1
+        }).then(function (response) {
+            // use to set form values back to null
+            // this.setState({
+            //     drugName: '',
+            // });
         });
+
       };
     
     render() {
@@ -55,7 +73,7 @@ class AddRx extends Component {
                              />
                             <input type="text" className="form-control formFieldsStyle" placeholder="Refills"
                                 value={this.state.refills}
-                                name="refils"
+                                name="refills"
                                 onChange={this.handleInputChange}                            
                              />
                             <input type="text" className="form-control formFieldsStyle" placeholder="Quantity Dispensed"
@@ -110,7 +128,7 @@ class AddRx extends Component {
                                 onChange={this.handleInputChange}                               
                             />
                         </div>
-                        <button onClick={this.handleFormSubmit} className="btn btn-primary getRxData">Submit</button>
+                        <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary getRxData">Submit</button>
                     </div>
                 </div>
                 <TabScreens />
