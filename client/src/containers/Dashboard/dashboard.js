@@ -20,10 +20,7 @@ class Dashboard extends React.Component {
                 <div className='row dashboard'>
                     <div className='col-md-12 patient-cards'>
                       
-                            />
-                        )
-                        )}
-                    </div>
+                                               </div>
                 </div>
                 <TabScreens />
             </div>

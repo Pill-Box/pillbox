@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
 
-    Patient.associate = function (models) {
+    Patient.associate = models => {
       Patient.hasMany(models.Rx, {
         onDelete: "cascade"
       });
     };
 
-    Patient.associate = function(models) {
+    Patient.associate = models => {
       Patient.belongsTo(models.User, {
           foreignKey: {
               allowNull: false
