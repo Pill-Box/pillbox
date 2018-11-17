@@ -3,9 +3,9 @@ module.exports = function(sequelize, DataTypes) {
         drug_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-              len: [75]
-            }
+        },
+        ndc: {
+            type: DataTypes.STRING,
         },
         refills: {
             type: DataTypes.INTEGER,
@@ -16,12 +16,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
         frequency: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         },
-        frequency_num: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+        perDay: {
+            type: DataTypes.STRING
         },
         time_of_day: {
             type: DataTypes.STRING
@@ -40,15 +38,19 @@ module.exports = function(sequelize, DataTypes) {
         },
         prescriber: {
             type: DataTypes.STRING
+        },
+        prescriber_number: {
+            type: DataTypes.STRING
         }
    });
 
     Rx.associate = function(models) {
-        Rx.belongsTo(models.User, {
+        Rx.belongsTo(models.Patient, {
             foreignKey: {
                 allowNull: false
             }
         });
     };
+    
     return Rx;
   };
