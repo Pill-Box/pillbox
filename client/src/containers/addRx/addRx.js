@@ -3,7 +3,14 @@ import axios from "axios";
 import TabScreens from '../../components/Sidebar/bottomBar'
 import './addRx.css'
 
+
 class AddRx extends Component {
+
+    componentDidMount() {
+        axios.get('/api/Rxs', {
+            
+        });
+    }
 
     state = {
         drugName: "",
@@ -17,7 +24,8 @@ class AddRx extends Component {
         pharmacyContact: "",
         prescriber: "",
         prescriberContact: "",
-        notes: ""
+        notes: "",
+        UserId: 1
     };
 
     handleInputChange = event => {
@@ -30,7 +38,7 @@ class AddRx extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-    
+
         // const {name,value} = event.target;
 
         axios.post('/api/Rxs', {

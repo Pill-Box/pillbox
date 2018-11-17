@@ -15,4 +15,12 @@ module.exports = app => {
     });
   });
 
+  app.get("/patients", (req, res) => {
+    db.Patient.findAll({
+      include: [db.User]
+    }).then = (dbPatient) => {
+      res.json(dbPatient);
+    };
+  })
 }
+
