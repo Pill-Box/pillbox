@@ -16,8 +16,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
         },
         frequency: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
+        },
+        perDay: {
+            type: DataTypes.STRING
         },
         time_of_day: {
             type: DataTypes.STRING
@@ -43,11 +45,12 @@ module.exports = function(sequelize, DataTypes) {
    });
 
     Rx.associate = function(models) {
-        Rx.belongsTo(models.User, {
+        Rx.belongsTo(models.Patient, {
             foreignKey: {
                 allowNull: false
             }
         });
     };
+    
     return Rx;
   };
