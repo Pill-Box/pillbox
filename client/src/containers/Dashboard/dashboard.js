@@ -5,31 +5,30 @@ import Card from '../../components/PatientCard/patientCard'
 import patients from '../../components/tempName.json'
 import './dashboard.css'
 
+
 class Dashboard extends React.Component {
     state = { patients }
 
     render() {
         return (
             <div className="dashboard-body gradient-background">
-                <Title/>
-                <div className='row dashboard'>
-                    <div className='col-md-12 patient-cards'>
-                        {patients.map(patient => (
-                            <Card
-                                id={patient.id}
-                                key={patient.id}
-                                name={patient.name}
-                                birthday={patient.birthday}
-                                Rx={patient.Rx}
-                                TOD={patient.TOD}
-                                frequency={patient.frequency}
-                            />
-                        )
-                        )}
-                    </div>
-                </div>
-                 <TabScreens />
+                <Title />
+                <div className="patient-cards">
+                {patients.map(patient => (
+                    <Card
+                        id={patient.id}
+                        key={patient.id}
+                        name={patient.name}
+                        birthday={patient.birthday}
+                        Rx={patient.Rx}
+                        TOD={patient.TOD}
+                        frequency={patient.frequency}
+                    />
+                )
+                )}</div>
+            <TabScreens />
             </div>
+
         )
     }
 }

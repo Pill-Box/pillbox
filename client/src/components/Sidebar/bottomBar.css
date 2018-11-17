@@ -1,4 +1,4 @@
-.bottomNav {
+/* .bottomNav {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -16,11 +16,7 @@
     padding-bottom: 10px;
 }
 
-.col-md-3:hover {
-    opacity: .7;
-}
-
-a {
+.fas {
     text-decoration: none !important;
     color: black;
-}
+} */
