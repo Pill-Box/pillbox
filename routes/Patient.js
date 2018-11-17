@@ -9,6 +9,14 @@ module.exports = app => {
     });
   })
 
+  app.get("/patients", (req, res) => {
+    db.Patient.find({
+      include: [db.User]
+    }).then = (dbPatient) => {
+      res.json(dbPatient);
+    };
+  })
+
   //New Patient route
   app.post('/api/patients', (req, res) => {
     db.Patient.create(req.body).then(data => {
