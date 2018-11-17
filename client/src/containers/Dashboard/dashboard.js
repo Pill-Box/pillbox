@@ -13,20 +13,24 @@ class Dashboard extends React.Component {
         return (
             <div className="dashboard-body gradient-background">
                 <Title />
-                <div className="patient-cards">
-                {patients.map(patient => (
-                    <Card
-                        id={patient.id}
-                        key={patient.id}
-                        name={patient.name}
-                        birthday={patient.birthday}
-                        Rx={patient.Rx}
-                        TOD={patient.TOD}
-                        frequency={patient.frequency}
-                    />
-                )
-                )}</div>
-            <TabScreens />
+                <div className="container">
+
+                    <div className="patient-cards">
+                        {patients.map(patient => (
+                            <Card
+                                id={patient.id}
+                                key={patient.id}
+                                name={patient.name}
+                                birthday={patient.birthday}
+                                Rx={patient.Rx}
+                                TOD={patient.TOD}
+                                frequency={patient.frequency}
+                            />
+                        )
+                        )}
+                    </div>
+                </div>
+                <TabScreens />
             </div>
 
         )

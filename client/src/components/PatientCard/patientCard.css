@@ -1,7 +1,7 @@
-/* .patient-card {
+.patient-card {
     font-family: 'Montserrat', sans-serif;
     padding: 20px;
-    width: 70%;
+    margin-top: 40px;
 }
 
 .patient-card-header {
@@ -12,4 +12,4 @@
 .patient-card-body {
     margin-top: 5px;
     font-size: 15px;
-} */
+}

@@ -21,10 +21,10 @@
     box-sizing: border-box; 
     color: white;
     border-radius: 50px;
-    padding: 20px;
+    padding: 30px;
     font-weight: bold;
     margin: auto;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 /* .boxStyle:hover {
@@ -54,7 +54,7 @@ and (min-device-width : 768px)
 and (max-device-width : 1024px) 
 and (orientation : portrait) { 
     #logIn, #signUp, #info {
-        margin-top: 30px;
+        margin-top: 70px;
         font-size: 30px;
         line-height: 30px;
     }

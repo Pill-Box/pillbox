@@ -1,11 +1,6 @@
 .title {
     font-family: 'Montserrat', sans-serif;
     color: white;
-    font-weight: bold;
-    font-size: 30px;
-    display: inline-block;
-    float: none;
-    text-align: center;
 }
 
 .title:hover {
@@ -15,8 +10,11 @@
 
 .nav {
     padding-top: 10px;
-    margin-bottom: 50px;
-    background: linear-gradient(135deg, rgb(4, 188, 230) 0%, rgba(4,164,200,1) 1%, rgba(3,113,150,1) 100%);
-
+    /* padding-left: 25px; */
+    /* margin-bottom: 50px; */
+    /* background: linear-gradient(135deg, rgb(4, 188, 230) 0%, rgba(4,164,200,1) 1%, rgba(3,113,150,1) 100%); */
 }
 
+.gradient-background-title {
+    background: linear-gradient(135deg, rgb(4, 188, 230) 0%, rgba(4,164,200,1) 1%, rgba(3,113,150,1) 100%);
+}

@@ -7,13 +7,17 @@ class Title extends React.Component {
     return (
       <div className="nav">
         <Navbar>
+        <div className="container">
           <Navbar.Header>
-              <a className="title" href='/'><h1 className="logoTitle"><i>pillBox</i></h1></a>
+            <a className="title" href='/'><h1><i>pillBox</i></h1></a>
           </Navbar.Header>
+          </div>
+
         </Navbar>
       </div>
+
     )
   }
 }
 
-export default Title;
+export default Title

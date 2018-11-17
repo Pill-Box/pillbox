@@ -10,12 +10,12 @@ class Login extends React.Component {
         username: '',
         password: '',
         redirect: false
-     }
+    }
 
     handleInput = e => {
         const { name, value } = e.target
         this.setState({ [name]: value })
-            }
+    }
 
     handleSubmit = e => {
         e.preventDefault()
@@ -23,25 +23,24 @@ class Login extends React.Component {
         console.log(`Username ${username}`)
         console.log(`Password is ${password}`)
         //Possibly hook up passport here?
-        if (this.state.username && this.state.password !=='') { 
+        if (this.state.username && this.state.password !== '') {
             console.log('Click')
-            this.setState({ redirect: true})
-          }
+            this.setState({ redirect: true })
+        }
     }
 
 
     render() {
         if (this.state.redirect === true) {
             return <Redirect to='/dashboard' />
-          }
-      
+        }
+
 
         return (
             <div>
-             <div className="gradient-background login">
+                <div className="gradient-background-title">
                     <Title />
-                </div>
-                <div className='bbstyle login-div container'>
+                </div>                <div className='bbstyle login-div container'>
                     <h3>LOG IN</h3>
                     <div className='row'>
                         <div className='col-md-12'>
@@ -75,7 +74,7 @@ class Login extends React.Component {
                     <br />
                     <input id='submit' type='submit' value='SUBMIT' onClick={this.handleSubmit} />
                     <br />
-                  <p>Forgot your password?{'    '}<a href='/reset'>Reset it!</a></p>
+                    <p>Forgot your password?{'    '}<a href='/reset'>Reset it!</a></p>
                 </div>
             </div>
         )

@@ -37,7 +37,7 @@ class SignUp extends React.Component {
 
         return (
             <div>
-                <div className="gradient-background">
+                <div className="gradient-background-title">
                     <Title />
                 </div>
                 

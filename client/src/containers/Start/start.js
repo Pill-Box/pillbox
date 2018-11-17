@@ -6,13 +6,15 @@ class Start extends React.Component {
     render() {
         return (
             <div>
+                <div class="gradient-background-title">
                     <Title />
-                <div class="container">
-                    
+                </div>
+                <div className="container">
+
                     <a href='/login'><h3 id="logIn" className='startStyle'>Log-in</h3></a>
-                   
+
                     <a href='/signup'> <h3 id="signUp" className='startStyle'>Sign-up</h3></a>
-                   
+
                     <a href='/info'> <h3 id="info" className='startStyle'>Info</h3></a>
                 </div>
 

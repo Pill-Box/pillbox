@@ -1,4 +1,4 @@
-/* .bottomNav {
+.bottomNav {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -6,6 +6,7 @@
     color: black;
     text-align: center;
     border-top: 1px solid black;
+    margin-top: 0;
 }
 
 .col-md-3 {
@@ -19,4 +20,4 @@
 .fas {
     text-decoration: none !important;
     color: black;
-} */
+}

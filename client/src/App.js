@@ -7,6 +7,7 @@ import SignUp from './containers/signup/signup'
 import Reset from './containers/Reset/reset'
 import Dashboard from './containers/Dashboard/dashboard'
 import AddRx from './containers/addRx/addRx'
+import AddPatient from './containers/addPatient/addPatient'
 import './App.css'
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path='/reset' component={Reset} />
         <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/addRx' component={AddRx} />
+        <Route exact path='/addpatient' component={AddPatient} />
       </Switch>
     </div>
   </Router>

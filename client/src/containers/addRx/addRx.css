@@ -1,5 +1,4 @@
-/* #results {
-    background-color: lightgrey;
+#results {
     width: 500px;
     height: 250px;
     margin: 50px;
@@ -16,4 +15,5 @@
 
 .formFieldsStyle {
     margin: 1em 0 1em 0;
-} */
+}
+

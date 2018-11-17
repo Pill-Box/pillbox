@@ -21,8 +21,9 @@ class Reset extends React.Component {
     render() {
         return (
             <div>
-                <Title />
-                <div className='row'>
+                <div className="gradient-background">
+                    <Title />
+                </div>                <div className='row'>
                     <div className='col-md-12 boxStyle'>
                         <p>Please enter your email address, and check your email for information on how to reset your password.</p>
                         <form className='inputForm first' >

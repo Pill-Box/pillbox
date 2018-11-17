@@ -1,5 +1,9 @@
-/* .infoText {
+.infoText {
     text-align: left; 
+}
+
+#logoImg {
+    width: 200px;
 }
 
 @media only screen 
@@ -9,4 +13,4 @@ and (orientation : portrait) {
     #logoImg {
         width: 160px;
     }
- } */
+ }
