@@ -29,10 +29,12 @@ var db = require("./models");
 // Add routes, both API and view
 require('./routes/Rx')(app);
 require('./routes/Patient')(app);
+require('./routes/User')(app);
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
       console.log(`App listening on PORT ${PORT}`);
     });

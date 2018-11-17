@@ -1,13 +1,35 @@
 const db = require('../models')
 
 module.exports = app => {
-  app.get("/api/patients", (req, res) => {
-    db.Patient.findAll({
-      include: [db.User]
+  app.get("/api/user/patients", (req, res) => {
+    const query = {}
+
+    ///////MAY CHANGE
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    db.User.findOne({
+      where: query,
+      include: [{
+        model: Patient, 
+        include: [db.Rx]
+      }],
+
     }).then(data => {
       res.json(data);
     });
-  })
+  });
+
+  app.get("/api/user/patients/:id", (req, res) => {
+    db.User.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Patient],
+       }).then(data =>  {
+      res.json(data);
+    });
+  });
 
   //New Patient route
   app.post('/api/patients', (req, res) => {
