@@ -44,13 +44,5 @@ module.exports = (sequelize, DataTypes) => {
         }
    });
 
-    Rx.associate = models => {
-        Rx.belongsTo(models.Patient, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
-    
     return Rx;
   };
