@@ -26,15 +26,13 @@ app.post('/api/Rx', (req, res) => {
   app.get("/api/user/:id", (req, res) => {
     db.User.findOne({
       where: {
-        id: req.params.id
+        PatientId: req.params.id
       },
-      include: [
-        db.Patient
-      ]
+      include: [db.Patient],
     }).then(data => {
-      res.json(data);
-    });
-  })
+      res.json(data)
+    })
+  });
 
 //List of Patients and their Rxs
 //Get all patients and rxs by user id
