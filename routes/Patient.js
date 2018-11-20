@@ -1,19 +1,18 @@
 const db = require('../models')
 
-//Get all patients by user id
 module.exports = app => {
-  app.get("/api/patients/:id", (req, res) => {
-    db.User.findOne({
+  
+//Get all patients by user id
+  app.get('/api/patients/:id', (req, res) => {
+    db.Rx.findAll({
       where: {
-        id: req.params.id
+        PatientId: req.params.id
       },
-      include: [
-        db.Patient
-      ]
+      include: [db.Patient],
     }).then(data => {
-      res.json(data);
-    });
-  })
+      res.json(data)
+    })
+  });
 
 //Get all patients and rxs by user id
   app.get("/api/user/patient/rx/:id", (req, res) => {
@@ -32,14 +31,6 @@ module.exports = app => {
     });
   })
 
-
-  app.get("/patients", (req, res) => {
-    db.Patient.find({
-      include: [db.User]
-    }).then = (dbPatient) => {
-      res.json(dbPatient);
-    };
-  })
 
   //New Patient route
   app.post('/api/patients', (req, res) => {

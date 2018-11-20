@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
 
-    Patient.associate = function (models) {
+    Patient.associate = models => {
       Patient.hasMany(models.Rx, {
         onDelete: "cascade"
       });
