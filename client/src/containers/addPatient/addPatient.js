@@ -33,12 +33,8 @@ class AddPatient extends React.Component {
         axios.post('/api/patients', {
             name_first: this.state.firstName,
             name_last: this.state.lastName
-        })
-        // .then(response => this.loadPatients()) 
-        // // console.log("CLICKETY CLICK")
-        //     .catch(err => console.log(`You have an error: ${err}`))
-
-    };
+         })
+      };
 
     render() {
         return (

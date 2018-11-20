@@ -29,6 +29,8 @@ var db = require("./models");
 // Add routes, both API and view
 require('./routes/Rx')(app);
 require('./routes/Patient')(app);
+require('./routes/User')(app);
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

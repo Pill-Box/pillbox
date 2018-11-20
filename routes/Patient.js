@@ -1,12 +1,81 @@
 const db = require('../models')
 
 module.exports = app => {
-  app.get("/api/patients", (req, res) => {
-    db.Patient.findAll({
-      include: [db.User]
+  app.get("/api/user/patients/:id", (req, res) => {
+    db.User.findAll({
+      where: {
+        id: req.params.id
+      },
+      include: [{
+        model: db.Patient
+      }]
+      // include: [{ model: db.Rx }]
+    }).then(data => {
+      db.Patient.findAll({
+        where: {
+        id: data[0].UserId
+        },
+        include: [db.Rx],
+      }).then(data => {
+        res.json(data)
+      })
+      // res.json(data);
+    });
+  });
+
+  app.get('/api/patients/:id', (req, res) => {
+    db.Patient.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Rx],
+    }).then(data => {
+      res.json(data)
+    })
+  });
+
+  // app.get("/api/user/patients/:id", (req, res) => {
+  //   db.User.findAll({
+  //     where: {
+  //       id: req.params.id
+  //     },
+  //     include: [{
+  //       model: db.Patient}] 
+  //       // include: [{ model: db.Rx }]
+  //     }).then(data => {
+  //     res.json(data);
+  //   });
+  // });
+
+
+  // app.get('/api/patients/:id', (req, res) => {
+  //   db.Patient.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     },
+  //     include: [ db.Rx ],
+  //   }).then(data => {
+  //     res.json(data)
+  //   })
+  // });
+
+  app.get("/api/user/patients/:id/:id", (req, res) => {
+    db.User.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Patient],
     }).then(data => {
       res.json(data);
     });
+  });
+
+  app.get("/patients", (req, res) => {
+    db.Patient.find({
+      include: [db.User]
+    }).then = (dbPatient) => {
+      res.json(dbPatient);
+    };
   })
 
   //New Patient route
