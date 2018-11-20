@@ -76,7 +76,7 @@ module.exports = app => {
     }).then = (dbPatient) => {
       res.json(dbPatient);
     };
-  })
+  });
 
   //New Patient route
   app.post('/api/patients', (req, res) => {
