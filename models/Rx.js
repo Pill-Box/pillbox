@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    var Rx = sequelize.define("Rx", {
+    var Rx = sequelize.define('Rx', {
         drug_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -44,13 +44,5 @@ module.exports = (sequelize, DataTypes) => {
         }
    });
 
-    Rx.associate = models => {
-        Rx.belongsTo(models.Patient, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
-    
     return Rx;
   };
