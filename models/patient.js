@@ -23,12 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     Patient.associate = function(models) {
-      Patient.belongsTo(models.User, {
-          foreignKey: {
-              allowNull: false
-          }
-      });
-  };
+      Patient.belongsTo(models.User);
+    };
   
     return Patient;
   };

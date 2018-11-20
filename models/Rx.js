@@ -45,12 +45,8 @@ module.exports = function(sequelize, DataTypes) {
    });
 
     Rx.associate = function(models) {
-        Rx.belongsTo(models.Patient, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
+        Rx.belongsTo(models.Patient);
     };
-    
+
     return Rx;
   };
