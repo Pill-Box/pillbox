@@ -21,10 +21,6 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "cascade"
       });
     };
-
-    Patient.associate = function(models) {
-      Patient.belongsTo(models.User);
-    };
   
     return Patient;
   };

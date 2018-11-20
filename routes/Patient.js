@@ -1,32 +1,26 @@
 const db = require('../models')
 
+//Get all patients by user id
 module.exports = app => {
-  app.get("/api/patients", (req, res) => {
-    db.Patient.findAll({
+  app.get("/api/patients/:id", (req, res) => {
+    db.User.findOne({
+      where: {
+        id: req.params.id
+      },
       include: [
-        db.User
+        db.Patient
       ]
     }).then(data => {
       res.json(data);
     });
   })
 
-  app.get("/api/rx/patients", (req, res) => {
-    db.Rx.findAll({
-      include: [{
-        model: db.Patient,
-        include: [{
-          model: db.User,
-        }]
-      }]
-    }).then(data => {
-      res.json(data);
-    });
-  })
-
-
-  app.get("/api/rx/patientx", (req, res) => {
+//Get all patients and rxs by user id
+  app.get("/api/user/patient/rx/:id", (req, res) => {
     db.User.findOne({
+      where: {
+        id: req.params.id
+      },
       include: [{
         model: db.Patient,
         include: [{
@@ -38,15 +32,6 @@ module.exports = app => {
     });
   })
 
-  // app.get("/api/rx/patients", (req, res) => {
-  //   db.Rx.findAll({
-  //     include: [{
-  //       model: db.Patient,
-  //     }]
-  //   }).then(data => {
-  //     res.json(data);
-  //   });
-  // })
 
   app.get("/patients", (req, res) => {
     db.Patient.find({
