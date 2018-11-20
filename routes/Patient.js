@@ -11,11 +11,11 @@ module.exports = app => {
       }]
       // include: [{ model: db.Rx }]
     }).then(data => {
-      db.Patient.findAll({
+        db.Rx.findAll({
         where: {
-        id: data[0].UserId
+        PatientId: data[0].Patients[0].UserId
         },
-        include: [db.Rx],
+        include: [db.Patient],
       }).then(data => {
         res.json(data)
       })
@@ -24,11 +24,11 @@ module.exports = app => {
   });
 
   app.get('/api/patients/:id', (req, res) => {
-    db.Patient.findOne({
+    db.Rx.findAll({
       where: {
-        id: req.params.id
+        PatientId: req.params.id
       },
-      include: [db.Rx],
+      include: [db.Patient],
     }).then(data => {
       res.json(data)
     })
