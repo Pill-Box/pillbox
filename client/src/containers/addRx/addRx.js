@@ -1,23 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { PatientList, PatientListItem } from '../../components/PatientList'
 import TabScreens from '../../components/Sidebar/bottomBar'
 import './addRx.css'
 
-
 class AddRx extends Component {
-
-    componentDidMount() {
-        let patientList = []
-
-        axios.get('/api/patients')
-        .then(function (patientData) {
-            console.log('patient data');
-            console.log(patientData);
-        })
-        .catch(err => console.log(`Error: ${err}`)
-        );
-    }
-
     state = {
         drugName: "",
         ndc: "",
@@ -32,8 +19,23 @@ class AddRx extends Component {
         prescriber: "",
         prescriberContact: "",
         notes: "",
-        UserId: 1
+        PatientId: "",
+        Name_First: "",
+        Name_Last: "",
+        patients: []
     };
+
+    componentDidMount() {
+        axios.get('/api/user/1')
+        .then(patientData => {
+            console.log(patientData.data);
+            this.setState({
+                patients: patientData.data.Patients
+            })
+        })
+        .catch(err => console.log(`Error: ${err}`)
+        );
+    }
 
     handleInputChange = event => {
         const {name, value} = event.target
@@ -47,7 +49,6 @@ class AddRx extends Component {
         event.preventDefault();
 
         axios.post('/api/Rxs', {
-            
             drug_name: this.state.drugName,
             ndc: this.state.ndc,
             refills: this.state.refills,
@@ -60,7 +61,8 @@ class AddRx extends Component {
             pharmacy_number: this.state.pharmacyContact,
             prescriber: this.state.prescriber,
             prescriber_number: this.state.prescriberContact,
-            patient: this.state.patient
+            patient: this.state.patient,
+            PatientId: this.state.patientId
         }).then(function (response) {
             // use to set form values back to null
             // this.setState({
@@ -71,18 +73,39 @@ class AddRx extends Component {
       };
     
     render() {
+        let optionItems = this.state.patients.map(patientx => 
+            <option key={patientx.id}>{patientx.name_first}</option>
+        );
+
+        console.log(optionItems);
+
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="form-group formStyle borderOrange">
-                            <select className="form-control formFieldsStyle" id="timeOfDay" placeholder="Time of Day"
-                                value={this.state.patient}
-                                name="patient"
+                            <PatientList
+                                id="patientList"
+                                name="patientId"
                                 onChange={this.handleInputChange}
                             >
-                                <option value="">Select Patient</option>
-
+                                {this.state.patients.map(patient => (
+                                    <PatientListItem 
+                                        key={patient.id}
+                                >
+                                        {patient.id}
+                                        {patient.name_first}
+                                        
+                                    </PatientListItem>
+                                ))}
+                            </PatientList>
+                            <select className="form-control formFieldsStyle"
+                                value={this.state.patientId}
+                                name="patientId"
+                                onChange={this.handleInputChange}>
+                                <option>
+                                    {optionItems}
+                                </option>
                             </select>
                             <input type="text" className="form-control formFieldsStyle" placeholder="Drug Name"
                                 value={this.state.drugName}

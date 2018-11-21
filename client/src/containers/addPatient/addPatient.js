@@ -4,6 +4,7 @@ import './addPatient.css'
 import axios from 'axios'
 
 class AddPatient extends React.Component {
+
     state = {
         patients: [],
         firstName: "",
@@ -18,7 +19,7 @@ class AddPatient extends React.Component {
     };
 
     loadPatients = () => {
-        axios.get('/api/patients')
+        axios.get('/api/user/:id')
             .then(res =>
                 this.setState({ patients: res.data, name_first: '', name_last: '' })
             )
