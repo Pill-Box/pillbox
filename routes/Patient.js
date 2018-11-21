@@ -26,7 +26,7 @@ app.post('/api/Rx', (req, res) => {
   app.get("/api/user/:id", (req, res) => {
     db.User.findOne({
       where: {
-        PatientId: req.params.id
+        id: req.params.id
       },
       include: [db.Patient],
     }).then(data => {
@@ -53,7 +53,6 @@ app.post('/api/Rx', (req, res) => {
   })
 
 //Get a list of Patients Rxs by patient id
-
   app.get("/api/user/patient/:patientId", (req, res) => {
     db.Patient.findOne({
       where: {

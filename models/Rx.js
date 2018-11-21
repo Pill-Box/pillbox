@@ -41,6 +41,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         prescriber_number: {
             type: DataTypes.STRING
+        },
+        PatientId: {
+            type: DataTypes.INTEGER
         }
    });
 
