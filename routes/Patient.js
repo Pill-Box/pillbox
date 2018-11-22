@@ -1,11 +1,6 @@
 const db = require('../models')
 module.exports = app => {
 //New User
-app.post('/api/users', (req, res) => {
-  db.User.create(req.body).then(data => {
-    res.json(data)
-  })
-})
 
 //New Patient route
   app.post('/api/patients', (req, res) => {
@@ -13,13 +8,6 @@ app.post('/api/users', (req, res) => {
       res.json(data)
     })
   })
-
-//New Rx
-app.post('/api/Rx', (req, res) => {
-  db.Rx.create(req.body).then(data => {
-    res.json(data)
-  })
-})
 
 // List of patients
 //Get all patients by user id

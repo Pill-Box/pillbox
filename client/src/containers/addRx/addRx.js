@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { PatientList, PatientListItem } from '../../components/PatientList'
 import TabScreens from '../../components/Sidebar/bottomBar'
 import './addRx.css'
 
 class AddRx extends Component {
+    
     state = {
         drugName: "",
         ndc: "",
@@ -19,13 +19,17 @@ class AddRx extends Component {
         prescriber: "",
         prescriberContact: "",
         notes: "",
-        PatientId: "",
+        patientId: "1",
         Name_First: "",
         Name_Last: "",
         patients: []
     };
 
     componentDidMount() {
+        this.loadPatients()
+    }
+
+    loadPatients = () => {
         axios.get('/api/user/1')
         .then(patientData => {
             console.log(patientData.data);
@@ -65,47 +69,29 @@ class AddRx extends Component {
             PatientId: this.state.patientId
         }).then(function (response) {
             // use to set form values back to null
-            // this.setState({
-            //     drugName: '',
-            // });
+            this.setState({
+                drugName: '',
+            });
         });
 
       };
     
     render() {
-        let optionItems = this.state.patients.map(patientx => 
-            <option key={patientx.id}>{patientx.name_first}</option>
+        let optionItems = this.state.patients.map(patient => 
+            <option key={patient.id} value={patient.id}>{patient.name_first}</option>
         );
-
-        console.log(optionItems);
 
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="form-group formStyle borderOrange">
-                            <PatientList
-                                id="patientList"
+                            <select className="form-control formFieldsStyle"
+                                value={optionItems.key}
                                 name="patientId"
                                 onChange={this.handleInputChange}
                             >
-                                {this.state.patients.map(patient => (
-                                    <PatientListItem 
-                                        key={patient.id}
-                                >
-                                        {patient.id}
-                                        {patient.name_first}
-                                        
-                                    </PatientListItem>
-                                ))}
-                            </PatientList>
-                            <select className="form-control formFieldsStyle"
-                                value={this.state.patientId}
-                                name="patientId"
-                                onChange={this.handleInputChange}>
-                                <option>
                                     {optionItems}
-                                </option>
                             </select>
                             <input type="text" className="form-control formFieldsStyle" placeholder="Drug Name"
                                 value={this.state.drugName}
