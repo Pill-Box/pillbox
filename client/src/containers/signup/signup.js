@@ -40,7 +40,7 @@ class SignUp extends React.Component {
                 <div className="gradient-background-title">
                     <Title />
                 </div>
-                
+
                 <div className='signup bbstyle container'>
                     <h3>SIGN UP</h3>
                     <div className='row'>
