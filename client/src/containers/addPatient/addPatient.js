@@ -6,11 +6,16 @@ import Title from '../../components/Title/title'
 
 
 class AddPatient extends React.Component {
+
     state = {
         patients: [],
         firstName: "",
-        lastName: ""
+        lastName: "",
+        userId: ""
     };
+    componentDidMount() {
+        this.loadPatients()
+    }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -20,11 +25,18 @@ class AddPatient extends React.Component {
     };
 
     loadPatients = () => {
-        axios.get('/api/patients')
-            .then(res =>
-                this.setState({ patients: res.data, name_first: '', name_last: '' })
-            )
-            .catch(err => console.log(`Error: ${err}`))
+        axios.get('/api/user/1')
+            .then(res => {
+                console.log(res.data.Patients)
+                this.setState({
+                    patients: res.data.Patients, 
+                    name_first: '', 
+                    name_last: '',
+                    userId: ''
+                })
+            })
+            .catch(err => console.log(`Error: ${err}`)
+        )
     }
 
     handleFormSubmit = event => {
@@ -32,8 +44,9 @@ class AddPatient extends React.Component {
         console.log("CLICK")
         axios.post('/api/patients', {
             name_first: this.state.firstName,
-            name_last: this.state.lastName
-         })
+            name_last: this.state.lastName,
+            UserId: this.state.userId
+        })
       };
 
     render() {
