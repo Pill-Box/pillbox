@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import Title from '../../components/Title/title'
 import FieldGroup from '../../components/Fieldgroup'
 import { Redirect } from 'react-router-dom'
@@ -24,11 +25,53 @@ class SignUp extends React.Component {
         console.log(`Username ${username}`)
         console.log(`Password is ${password}`)
         console.log(`Name is ${firstName} ${lastName}`)
-        /////////////THIS NEEDS TO BE HOOKED UP TO PASSPORT
         if (this.state.username && this.state.password && this.state.firstName && this.state.lastName !== '') {
             this.setState({ redirect: true })
         }
     }
+
+    registerUser = e => {
+        e.preventDefault();
+
+        if (
+          this.state.username === '' ||
+          this.state.password === '' ||
+          this.state.email === ''
+        ) {
+          this.setState({
+            showError: true,
+            loginError: false,
+            registerError: true,
+          });
+        } else {
+          axios
+            .post('/registerUser', {
+              name_first: this.state.firstName,
+              name_last: this.state.lastName,
+              username: this.state.username,
+              password: this.state.password
+            })
+            .then(response => {
+              if (response.data === 'username or email already taken') {
+                this.setState({
+                //   showError: true,
+                //   loginError: true,
+                //   registerError: false,
+                });
+              } else {
+                this.setState({
+                //   messageFromServer: response.data.message,
+                //   showError: false,
+                //   loginError: false,
+                //   registerError: false,
+                });
+              }
+            })
+            .catch(error => {
+              console.log(error.data);
+            });
+        }
+      };
 
     render() {
         if (this.state.redirect === true) {
@@ -101,7 +144,7 @@ class SignUp extends React.Component {
                                 placeholder='Confirm Password'
                             />
                         </form>
-                        <input id='submit' type='submit' value='SUBMIT' onClick={this.handleSubmit} />
+                        <input id='submit' type='submit' value='SUBMIT' onClick={this.registerUser} />
                     </div>
                 </div>
              </div>

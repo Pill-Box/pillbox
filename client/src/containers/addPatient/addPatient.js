@@ -11,8 +11,37 @@ class AddPatient extends React.Component {
         lastName: "",
         userId: ""
     };
-    componentDidMount() {
-        this.loadPatients()
+
+    async componentDidMount() {
+
+        let accessString = localStorage.getItem('JWT');
+        console.log(accessString);
+        if (accessString == null) {
+          this.setState({
+            isLoading: false,
+            error: true,
+          });
+        } else {
+          await axios
+            .get('/findUser', {
+              params: {
+                username: this.props.match.params.username,
+              },
+              headers: { Authorization: `JWT ${accessString}` },
+            })
+            .then(response => {
+              this.setState({
+                userId: response.data.id,
+                isLoading: false,
+                error: false,
+              });
+            })
+            .catch(error => {
+              console.log(error.data);
+            });
+        }
+
+        // this.loadUser()
     }
 
     handleInputChange = event => {
@@ -22,20 +51,18 @@ class AddPatient extends React.Component {
         });
     };
 
-    loadPatients = () => {
-        axios.get('/api/user/1')
-            .then(res => {
-                console.log(res.data.Patients)
-                this.setState({
-                    patients: res.data.Patients, 
-                    name_first: '', 
-                    name_last: '',
-                    userId: ''
-                })
-            })
-            .catch(err => console.log(`Error: ${err}`)
-        )
-    }
+    // loadUser = () => {
+    //     axios.get('/api/user/' + this.state.userId)
+    //         .then(res => {
+    //             console.log('user data')
+    //             console.log(res.data)
+    //             this.setState({
+    //                 userId: res.data.id
+    //             })
+    //         })
+    //         .catch(err => console.log(`Error: ${err}`)
+    //     )
+    // }
 
     handleFormSubmit = event => {
         event.preventDefault();

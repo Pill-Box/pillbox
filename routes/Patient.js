@@ -11,7 +11,7 @@ module.exports = app => {
 
 // List of patients
 //Get all patients by user id
-  app.get("/api/user/:id", (req, res) => {
+  app.get("/api/user/patients/:id", (req, res) => {
     db.User.findOne({
       where: {
         id: req.params.id

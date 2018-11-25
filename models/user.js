@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
     user_name: {
       type: DataTypes.STRING,
-      notEmpty: true
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
@@ -17,17 +17,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     name_first: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [35]
-      }
+      nullable: true,
     },
     name_last: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [35]
-      }
+      nullable: true,
     },
     active: {
       type: DataTypes.BOOLEAN,
