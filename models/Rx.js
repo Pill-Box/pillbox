@@ -1,5 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
     var Rx = sequelize.define('Rx', {
+        rx_num: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         drug_name: {
             type: DataTypes.STRING,
             allowNull: false,
