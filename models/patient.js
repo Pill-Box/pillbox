@@ -1,9 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
     var Patient = sequelize.define('Patient', {
           name_first: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          validate: {
           // len: [35]
         }
       },

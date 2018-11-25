@@ -15,14 +15,41 @@ class Dashboard extends React.Component {
         userId: ""
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        let accessString = localStorage.getItem('JWT');
+        console.log(accessString);
+        if (accessString == null) {
+          this.setState({
+            isLoading: false,
+            error: true,
+          });
+        } else {
+          await axios
+            .get('/findUser', {
+              params: {
+                username: this.props.match.params.username,
+              },
+              headers: { Authorization: `JWT ${accessString}` },
+            })
+            .then(response => {
+              this.setState({
+                userId: response.data.id,
+                isLoading: false,
+                error: false,
+              });
+            })
+            .catch(error => {
+              console.log(error.data);
+            });
+        }
+
         this.loadUser();
     }
 
     loadUser = () => {
-        axios.get('/api/user/patient/rx/1')
+        axios.get('/api/user/patient/rx/' + this.state.userId)
         .then(patientData => {
-            console.log(patientData.data.Patients);
+            // console.log(patientData.data.Patients);
             this.setState({
                 patients: patientData.data.Patients
             })

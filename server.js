@@ -1,5 +1,6 @@
 const express = require("express");
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
+const passport = require("passport")
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,13 +24,19 @@ if (process.env.NODE_ENV === "production") {
 
 // Requiring our models for syncing
 var db = require("./models");
-//	Import Passport Strategies
-// require('./config/passport')(passport, models.user);
+
+//	Import Passport Strategies & Config
+require('./config/jwtConfig');
+require('./config/passport');
+
+
+app.use(passport.initialize())
 
 // Add routes, both API and view
 require('./routes/Rx')(app);
 require('./routes/Patient')(app);
 require('./routes/User')(app);
+require('./routes/auth')(app);
 
 
 // Syncing our sequelize models and then starting our Express app

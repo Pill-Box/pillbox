@@ -1,9 +1,9 @@
 import React from 'react'
+import axios from 'axios'
 import './login.css'
 import FieldGroup from '../../components/Fieldgroup'
 import Title from '../../components/Title/title'
 import { Redirect } from 'react-router-dom'
-
 
 class Login extends React.Component {
     state = {
@@ -22,20 +22,69 @@ class Login extends React.Component {
         const { username, password } = this.state
         console.log(`Username ${username}`)
         console.log(`Password is ${password}`)
+<<<<<<< HEAD
         //Possibly hook up passport here?
         if (this.state.username && this.state.password !== '') {
             console.log('Click')
             this.setState({ redirect: true })
         }
     }
+=======
+        
+        if (this.state.username === '' || this.state.password === '') {
+            this.setState({
+            showError: false,
+            showNullError: true,
+            loggedIn: false,
+            });
+        } else {
+            axios
+            .post('/loginUser', 
+                {
+                    username: this.state.username,
+                    password: this.state.password
+                }
+            ).then(response => {
+                if (response.data === 'Bad User Name' || response.data === 'passwords do not match') {
+                    console.log(response.data);
+                    this.setState({
+                        showError: true,
+                        showNullError: false,
+                        redirect: false
+                    });
+                } else {
+                    console.log('successful login');
+                    localStorage.setItem('JWT', response.data.token);
+                    this.setState({
+                        loggedIn: true,
+                        showError: false,
+                        showENullrror: false,
+                        redirect: true
+                    });
+                }
+            })
+            .catch(error => {
+                console.log(error.data);
+            });
+        }
+>>>>>>> 64b8bfbdf96abd66923f1d6f0fa9ac497b41997a
 
+        // if (this.state.username && this.state.password !=='') { 
+        //     console.log('Click')
+        //     this.setState({ redirect: true})
+        // }
+    }
 
     render() {
         if (this.state.redirect === true) {
             return <Redirect to='/dashboard' />
         }
+<<<<<<< HEAD
 
 
+=======
+      
+>>>>>>> 64b8bfbdf96abd66923f1d6f0fa9ac497b41997a
         return (
             <div>
                 <div className="gradient-background-title">
@@ -46,7 +95,6 @@ class Login extends React.Component {
                     <h3>LOG IN</h3>
                     <div className='row'>
                         <div className='col-md-12'>
-
                             <form className='inputForm' >
                                 <FieldGroup
                                     name='username'
@@ -61,7 +109,6 @@ class Login extends React.Component {
                     <br />
                     <div className='row' >
                         <div className='col-md-12'>
-
                             <form className='inputForm' >
                                 <FieldGroup
                                     name='password'
