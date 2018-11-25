@@ -29,14 +29,14 @@ class AddPatient extends React.Component {
             .then(res => {
                 console.log(res.data.Patients)
                 this.setState({
-                    patients: res.data.Patients, 
-                    name_first: '', 
+                    patients: res.data.Patients,
+                    name_first: '',
                     name_last: '',
                     userId: ''
                 })
             })
             .catch(err => console.log(`Error: ${err}`)
-        )
+            )
     }
 
     handleFormSubmit = event => {
@@ -47,45 +47,45 @@ class AddPatient extends React.Component {
             name_last: this.state.lastName,
             UserId: this.state.userId
         })
-      };
+    };
 
     render() {
         return (
             <div className="dashboard-body gradient-background">
-                    <Title />
-                    <div className="container">
-                <div className='row'>
-                    <div className='col-md-12'>
+                <Title />
+                <div className="container">
+                    <div className='row'>
+                        <div className='col-md-12'>
 
-                        <h3>Switch to another user:</h3>
-                        {this.state.patients.length ?
-                            (null) : (
-                                <p className='add'>You currently have no other people on your list</p>
-                            )}
+                            <h3>Switch to another user:</h3>
+                            {this.state.patients.length ?
+                                (null) : (
+                                    <p className='add'>You currently have no other people on your list</p>
+                                )}
 
-                    </div>
-                </div>
-
-                <div className='row'>
-                    <div className='col-md-12'>
-                        <h3>Add a new person!</h3>
-                        <div className="form-group formStyle borderOrange">
-                            <input type="text" className="form-control formFieldsStyle"
-                                value={this.state.firstName}
-                                onChange={this.handleInputChange}
-                                name="firstName"
-                                placeholder="First Name"
-                            />
-                            <input type="text" className="form-control formFieldsStyle"
-                                value={this.state.lastName}
-                                onChange={this.handleInputChange}
-                                name="lastName"
-                                placeholder="Last Name"
-                            />
                         </div>
-                        <button onClick={this.handleFormSubmit} className="btn btn-primary gePatientData">Submit</button>
+                    </div>
+
+                    <div className='row'>
+                        <div className='col-md-12'>
+                            <h3>Add a new person!</h3>
+                            <div className="form-group formStyle borderOrange">
+                                <input type="text" className="form-control formFieldsStyle"
+                                    value={this.state.firstName}
+                                    onChange={this.handleInputChange}
+                                    name="firstName"
+                                    placeholder="First Name"
+                                />
+                                <input type="text" className="form-control formFieldsStyle"
+                                    value={this.state.lastName}
+                                    onChange={this.handleInputChange}
+                                    name="lastName"
+                                    placeholder="Last Name"
+                                />
+                                <button onClick={this.handleFormSubmit} className="btn btn-primary standard-btn gePatientData">Submit</button>
+                            </div>
+                        </div >
                     </div >
-                </div >
                 </div>
                 <TabScreens />
             </div>

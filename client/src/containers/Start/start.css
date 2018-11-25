@@ -24,12 +24,12 @@
     padding: 30px;
     font-weight: bold;
     margin: auto;
-    margin-top: 40px;
+    margin-top: 80px;
 }
 
-/* .boxStyle:hover {
-    opacity: .7;
-} */
+.startStyle:hover {
+    opacity: .9;
+}
 
 #logIn {
     background: #04AED5;

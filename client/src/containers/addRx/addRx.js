@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import TabScreens from '../../components/Sidebar/bottomBar'
 import Title from '../../components/Title/title'
+import TabScreens from '../../components/Sidebar/bottomBar'
 import './addRx.css'
 
 class AddRx extends Component {
@@ -83,101 +83,106 @@ class AddRx extends Component {
         );
 
         return (
-            <div className="gradient-background">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="form-group formStyle borderOrange">
-                                <select className="form-control formFieldsStyle"
-                                    value={optionItems.key}
-                                    name="patientId"
-                                    onChange={this.handleInputChange}
-                                >
-                                    {optionItems}
-                                </select>
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Drug Name"
-                                    value={this.state.drugName}
-                                    name="drugName"
-                                    onChange={this.handleInputChange}
-                                />
-                                <input type="text" className="form-control formFieldsStyle" id="ndc" placeholder="NDC: 0000-000-000"
-                                    value={this.state.ndc}
-                                    name="ndc"
-                                    onChange={this.handleInputChange}
-                                />
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Refills"
-                                    value={this.state.refills}
-                                    name="refills"
-                                    onChange={this.handleInputChange}
-                                />
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Quantity Dispensed"
-                                    value={this.state.quantityDispensed}
-                                    name="quantityDispensed"
-                                    onChange={this.handleInputChange}
-                                />
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Patient Instructions"
-                                    value={this.state.sig}
-                                    name="sig"
-                                    onChange={this.handleInputChange}
-                                />
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Frequency"
-                                    value={this.state.frequency}
-                                    name="frequency"
-                                    onChange={this.handleInputChange}
-                                />
-                                <select className="form-control formFieldsStyle" id="timeOfDay" placeholder="Time of Day"
-                                    value={this.state.perday}
-                                    name="perDay"
-                                    onChange={this.handleInputChange}
-                                >
-                                    <option value="">Per Day</option>
-                                    <option value="1">Once</option>
-                                    <option value="2">twice</option>
-                                    <option value="3">Three</option>
-                                    <option value="4">As Needed</option>
-                                </select>
-                                <select className="form-control formFieldsStyle" id="timeOfDay" placeholder="Time of Day"
-                                    value={this.state.timeOfDay}
-                                    name="timeOfDay"
-                                    onChange={this.handleInputChange}
-                                >
-                                    <option value="">Time of Day</option>
-                                    <option value="Morning">Morning</option>
-                                    <option value="Noon">Noon</option>
-                                    <option value="Evening">Evening</option>
-                                    <option value="Bedtime">Bedtime</option>
-                                </select>
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Pharmacist"
-                                    value={this.state.pharmacist}
-                                    name="pharmacist"
-                                    onChange={this.handleInputChange}
-                                />
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Pharmacy Contact"
-                                    value={this.state.pharmacyContact}
-                                    name="pharmacyContact"
-                                    onChange={this.handleInputChange}
-                                />
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Prescriber"
-                                    value={this.state.prescriber}
-                                    name="prescriber"
-                                    onChange={this.handleInputChange}
-                                />
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Prescriber Contact"
-                                    value={this.state.prescriberContact}
-                                    name="prescriberContact"
-                                    onChange={this.handleInputChange}
-                                />
-                                <textarea className="form-control formFieldsStyle" placeholder="Notes"
-                                    value={this.state.notes}
-                                    name="notes"
-                                    onChange={this.handleInputChange}
-                                />
+            <div>
+                <div className="gradient-background">
+                    <Title />
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="form-group formStyle borderOrange">
+                                    <select className="form-control formFieldsStyle"
+                                        value={optionItems.key}
+                                        name="patientId"
+                                        onChange={this.handleInputChange}
+                                    >
+                                        {optionItems}
+                                    </select>
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Drug Name"
+                                        value={this.state.drugName}
+                                        name="drugName"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="text" className="form-control formFieldsStyle" id="ndc" placeholder="NDC: 0000-000-000"
+                                        value={this.state.ndc}
+                                        name="ndc"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Refills"
+                                        value={this.state.refills}
+                                        name="refills"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Quantity Dispensed"
+                                        value={this.state.quantityDispensed}
+                                        name="quantityDispensed"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Patient Instructions"
+                                        value={this.state.sig}
+                                        name="sig"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Frequency"
+                                        value={this.state.frequency}
+                                        name="frequency"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <select className="form-control formFieldsStyle" id="timeOfDay" placeholder="Time of Day"
+                                        value={this.state.perday}
+                                        name="perDay"
+                                        onChange={this.handleInputChange}
+                                    >
+                                        <option value="">Per Day</option>
+                                        <option value="1">Once</option>
+                                        <option value="2">twice</option>
+                                        <option value="3">Three</option>
+                                        <option value="4">As Needed</option>
+                                    </select>
+                                    <select className="form-control formFieldsStyle" id="timeOfDay" placeholder="Time of Day"
+                                        value={this.state.timeOfDay}
+                                        name="timeOfDay"
+                                        onChange={this.handleInputChange}
+                                    >
+                                        <option value="">Time of Day</option>
+                                        <option value="Morning">Morning</option>
+                                        <option value="Noon">Noon</option>
+                                        <option value="Evening">Evening</option>
+                                        <option value="Bedtime">Bedtime</option>
+                                    </select>
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Pharmacist"
+                                        value={this.state.pharmacist}
+                                        name="pharmacist"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Pharmacy Contact"
+                                        value={this.state.pharmacyContact}
+                                        name="pharmacyContact"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Prescriber"
+                                        value={this.state.prescriber}
+                                        name="prescriber"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <input type="text" className="form-control formFieldsStyle" placeholder="Prescriber Contact"
+                                        value={this.state.prescriberContact}
+                                        name="prescriberContact"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <textarea className="form-control formFieldsStyle" placeholder="Notes"
+                                        value={this.state.notes}
+                                        name="notes"
+                                        onChange={this.handleInputChange}
+                                    />
+                                    <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary getRxData">SUBMIT</button>
+                                </div>
                             </div>
                         </div>
-                        <TabScreens />
                     </div>
+                    <TabScreens />
                 </div>
             </div>
+
         ) //return
     } //render
 }

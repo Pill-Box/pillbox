@@ -40,7 +40,9 @@ class Login extends React.Component {
             <div>
                 <div className="gradient-background-title">
                     <Title />
-                </div>                <div className='bbstyle login-div container'>
+                </div>
+                <div className="login-div">
+                <div className='bbstyle login-div container'>
                     <h3>LOG IN</h3>
                     <div className='row'>
                         <div className='col-md-12'>
@@ -75,6 +77,7 @@ class Login extends React.Component {
                     <input id='submit' type='submit' value='SUBMIT' onClick={this.handleSubmit} />
                     <br />
                     <p>Forgot your password?{'    '}<a href='/reset'>Reset it!</a></p>
+                </div>
                 </div>
             </div>
         )
