@@ -42,8 +42,6 @@ class AddPatient extends React.Component {
               console.log(error.data);
             });
         }
-
-        // this.loadUser()
     }
 
     handleInputChange = event => {
@@ -52,19 +50,6 @@ class AddPatient extends React.Component {
             [name]: value
         });
     };
-
-    // loadUser = () => {
-    //     axios.get('/api/user/' + this.state.userId)
-    //         .then(res => {
-    //             console.log('user data')
-    //             console.log(res.data)
-    //             this.setState({
-    //                 userId: res.data.id
-    //             })
-    //         })
-    //         .catch(err => console.log(`Error: ${err}`)
-    //     )
-    // }
 
     handleFormSubmit = event => {
         event.preventDefault();

@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     var Rx = sequelize.define('Rx', {
         rx_num: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         drug_name: {
