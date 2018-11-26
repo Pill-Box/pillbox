@@ -1,4 +1,4 @@
-.boxStyle {
+/* .boxStyle {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 20px;
@@ -7,45 +7,57 @@
     color: white;
     width: 60%;
     /* border-radius: 2px; */
-    padding: 20px;
+    /* padding: 20px;
     font-weight: bold;
     margin: auto;
     margin-top: 20px;
 }
+*/
 
-/*  */
-.boxStyle:hover {
-    opacity: .7;
+.start-div {
+    margin-top: 70px;
+    padding: 30px;
+}
+
+.startStyle {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    border-radius: 50px;
+    padding: 30px;
+    font-weight: bold;
+    margin: auto;
+}
+
+.startStyle:hover {
+    opacity: .8;
 }
 
 #logIn {
-    background: #00B5A8;
+    background: #ffffff;
 }
 
-#signUp {
-    background: #009AA0;
+#signUp, #info {
+    background: #ffffff;
+    margin-top: 50px;
 }
 
-#info {
-    background: #038197;
-}
 
 a {
     text-decoration: none !important;
   }
 
-#logIn, #signUp, #info {
-    border-radius: 50px;
-}
+
 
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : portrait) { 
-    #logIn, #signUp, #info {
-        height: 110px;
-        margin-top: 30px;
-        font-size: 30px;
-        line-height: 30px;
+    .startStyle {
+        font-size: 20px;
     }
- }
+    .boxStyle {
+        width: 70%;
+    }
+ }  

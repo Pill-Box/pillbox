@@ -12,7 +12,7 @@ export const PatientCard = ({ children }) => (
             <p className="card-text">{children[2]}</p>
         </div>
     </div>
-  );
+);
 
 // class Card extends React.Component {
 

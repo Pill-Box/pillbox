@@ -1,11 +1,14 @@
-.dashboard-body {
+/* .dashboard-body {
     min-height: 1000px;
+    background: linear-gradient(135deg, rgb(4, 188, 230) 0%, rgba(4,164,200,1) 1%, rgba(3,113,150,1) 100%);
+
 }
 
 .patient-cards {
     background: white;
-    margin: 30px;
+    margin-top: 30px;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 8px 9px 5px -7px rgba(0,84,76,1);
-
+    margin: auto;
 }
+ */
