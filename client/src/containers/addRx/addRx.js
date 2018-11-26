@@ -22,7 +22,7 @@ class AddRx extends Component {
         prescriber: "",
         prescriberContact: "",
         notes: "",
-        patientId: "",
+        patientId: "1",
         Name_First: "",
         Name_Last: "",
         patients: [],
@@ -31,7 +31,7 @@ class AddRx extends Component {
 
     async componentDidMount() {
         let accessString = localStorage.getItem('JWT');
-        console.log(accessString);
+        // console.log(accessString);
         if (accessString == null) {
             this.setState({
                 isLoading: false,
@@ -63,9 +63,10 @@ class AddRx extends Component {
     loadPatient = () => {
         axios.get('/api/user/patients/' + this.state.userId)
             .then(patientData => {
-                console.log(patientData.data);
+                console.log(patientData.data.Patients);
                 this.setState({
-                    patients: patientData.data.Patients
+                    patients: patientData.data.Patients,
+                    patientId: patientData.data.Patients[0].id
                 })
             })
             .catch(err => console.log(`Error: ${err}`)
@@ -82,7 +83,7 @@ class AddRx extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
+        console.log(this.state.patientId);
         axios.post('/api/Rxs', {
             rx_num: this.state.rx_num,
             drug_name: this.state.drugName,
@@ -109,10 +110,11 @@ class AddRx extends Component {
     };
 
     render() {
-        let optionItems = this.state.patients.map(patient =>
+        // console.log(this.state.patients);
+        let optionItems = this.state.patients.map(patient => 
             <option key={patient.id} value={patient.id}>{patient.name_first}</option>
         );
-
+        
         return (
             <div className="gradient-background">
             <Title/>
