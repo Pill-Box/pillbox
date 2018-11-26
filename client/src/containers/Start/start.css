@@ -14,34 +14,35 @@
 }
 */
 
+.start-div {
+    margin-top: 70px;
+    padding: 30px;
+}
+
 .startStyle {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 20px;
-    box-sizing: border-box; 
-    color: white;
+    color: black;
     border-radius: 50px;
     padding: 30px;
     font-weight: bold;
     margin: auto;
-    margin-top: 80px;
 }
 
 .startStyle:hover {
-    opacity: .9;
+    opacity: .8;
 }
 
 #logIn {
-    background: #04AED5;
+    background: #ffffff;
 }
 
-#signUp {
-    background: #048BB0;
+#signUp, #info {
+    background: #ffffff;
+    margin-top: 50px;
 }
 
-#info {
-    background: #037297;
-}
 
 a {
     text-decoration: none !important;
@@ -53,10 +54,8 @@ a {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : portrait) { 
-    #logIn, #signUp, #info {
-        margin-top: 70px;
-        font-size: 30px;
-        line-height: 30px;
+    .startStyle {
+        font-size: 20px;
     }
     .boxStyle {
         width: 70%;

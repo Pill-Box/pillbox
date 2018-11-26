@@ -2,6 +2,8 @@ import React from 'react'
 import TabScreens from '../../components/Sidebar/bottomBar'
 import './addPatient.css'
 import axios from 'axios'
+import Title from '../../components/Title/title'
+
 
 class AddPatient extends React.Component {
 
@@ -77,6 +79,8 @@ class AddPatient extends React.Component {
     render() {
         return (
             <div className="dashboard-body gradient-background">
+            <Title /> 
+            <div className="container">
                 <div className='row'>
                     <div className='col-md-12'>
 
@@ -110,6 +114,7 @@ class AddPatient extends React.Component {
                     </div >
                 </div >
                 <TabScreens />
+            </div>
             </div>
         )
     }
