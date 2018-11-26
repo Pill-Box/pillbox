@@ -16,4 +16,9 @@ module.exports = app => {
             res.json(data)
         })
     })
+
+    app.get('/signout', function(req, res){
+        req.logout();
+        res.redirect('/');
+    });
 }

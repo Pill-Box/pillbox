@@ -24,6 +24,7 @@ const App = () => (
         <Route exact path='/addRx' component={AddRx} />
         <Route exact path='/addpatient' component={AddPatient} />
         <Route exact path='/calendar' component={Calendar} />
+        <Route exact path='/signout' component={Start} />
       </Switch>
     </div>
   </Router>

@@ -6,6 +6,7 @@ import './addRx.css'
 class AddRx extends Component {
     
     state = {
+        rx_num: "",
         drugName: "",
         ndc: "",
         refills: "",
@@ -19,18 +20,46 @@ class AddRx extends Component {
         prescriber: "",
         prescriberContact: "",
         notes: "",
-        patientId: "1",
+        patientId: "",
         Name_First: "",
         Name_Last: "",
-        patients: []
+        patients: [],
+        userId: ""
     };
 
-    componentDidMount() {
-        this.loadPatients()
+    async componentDidMount() {
+        let accessString = localStorage.getItem('JWT');
+        console.log(accessString);
+        if (accessString == null) {
+          this.setState({
+            isLoading: false,
+            error: true,
+          });
+        } else {
+          await axios
+            .get('/findUser', {
+              params: {
+                username: this.props.match.params.username,
+              },
+              headers: { Authorization: `JWT ${accessString}` },
+            })
+            .then(response => {
+              this.setState({
+                userId: response.data.id,
+                isLoading: false,
+                error: false,
+              });
+            })
+            .catch(error => {
+              console.log(error.data);
+            });
+        }
+
+        this.loadPatient();
     }
 
-    loadPatients = () => {
-        axios.get('/api/user/1')
+    loadPatient = () => {
+        axios.get('/api/user/patients/' + this.state.userId)
         .then(patientData => {
             console.log(patientData.data);
             this.setState({
@@ -53,6 +82,7 @@ class AddRx extends Component {
         event.preventDefault();
 
         axios.post('/api/Rxs', {
+            rx_num: this.state.rx_num,
             drug_name: this.state.drugName,
             ndc: this.state.ndc,
             refills: this.state.refills,
@@ -69,9 +99,9 @@ class AddRx extends Component {
             PatientId: this.state.patientId
         }).then(function (response) {
             // use to set form values back to null
-            this.setState({
-                drugName: '',
-            });
+            // this.setState({
+            //     drugName: '',
+            // });
         });
 
       };
@@ -93,6 +123,11 @@ class AddRx extends Component {
                             >
                                     {optionItems}
                             </select>
+                            <input type="text" className="form-control formFieldsStyle" placeholder="Prescription Number"
+                                value={this.state.rx_num}
+                                name="rx_num"
+                                onChange={this.handleInputChange}
+                             />
                             <input type="text" className="form-control formFieldsStyle" placeholder="Drug Name"
                                 value={this.state.drugName}
                                 name="drugName"

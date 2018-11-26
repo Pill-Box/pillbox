@@ -2,6 +2,7 @@ import React from 'react'
 import './bottomBar.css'
 
 class TabScreens extends React.Component {
+
     render() {
         return (
             <div className='bottomNav'>
