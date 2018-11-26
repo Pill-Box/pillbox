@@ -107,6 +107,7 @@ class AddRx extends Component {
       };
     
     render() {
+        console.log(this.state.patients.id);
         let optionItems = this.state.patients.map(patient => 
             <option key={patient.id} value={patient.id}>{patient.name_first}</option>
         );
