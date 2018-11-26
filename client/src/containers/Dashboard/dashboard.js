@@ -5,6 +5,7 @@ import { Rx } from '../../components/PatientCard/rx'
 import TabScreens from '../../components/Sidebar/bottomBar'
 import axios from 'axios'
 import './dashboard.css'
+import DeleteBtn from '../../components/DeleteButton/deleteBtn'
 
 
 class Dashboard extends React.Component {
@@ -57,6 +58,12 @@ class Dashboard extends React.Component {
             .catch(err => console.log(`Error: ${err}`)
             );
     }
+    
+    deleteRx = id => {
+        axios.delete('/api/Rxs/' + id)
+           .then(res => this.loadUser())
+           .catch(err => console.log(err));
+       };
 
     handleInputChange = event => {
         const { name, value } = event.target
@@ -73,15 +80,18 @@ class Dashboard extends React.Component {
                 <div className="container">
                     <div className='row dashboard'>
                         <div className='col-md-12 patient-cards'>
+
                             {this.state.patients.map(patient => (
+
                                 <PatientCard
                                     key={patient.id}
                                 >
                                     {patient.name_first}
                                     {patient.name_last}
                                     {patient.Rxes.map(drug => (
-                                        <Rx>
+                                        <Rx key={drug.id}>
                                             {drug.drug_name}
+                                            <DeleteBtn onClick={() => this.deleteRx(drug.id)} />
                                         </Rx>
                                     ))}
                                 </PatientCard>

@@ -1,15 +1,18 @@
 import React from 'react'
 import './patientCard.css'
+import DeleteBtn from '../DeleteButton/deleteBtn'
 
 export const PatientCard = ({ children }) => (
     <div className="card">
         <div className="card-header">
             {children[0]} {children[1]}
+            <DeleteBtn onClick={() => this.deletePatient()} />
         </div>
         <hr />
         <div className="card-body">
             {console.log(children)}
             <p className="card-text">{children[2]}</p>
+ 
         </div>
     </div>
 );
