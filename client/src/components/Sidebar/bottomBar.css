@@ -6,9 +6,10 @@
     color: black;
     text-align: center;
     border-top: 1px solid black;
+    margin-top: 0;
 }
 
-.col-md-3 {
+.bar-cols {
     float: left;
     width: 20%;
     background-color: white;
@@ -16,11 +17,7 @@
     padding-bottom: 10px;
 }
 
-.col-md-3:hover {
-    opacity: .7;
-}
-
-a {
+.fas {
     text-decoration: none !important;
     color: black;
 }

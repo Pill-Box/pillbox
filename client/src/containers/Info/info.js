@@ -6,10 +6,11 @@ import './info.css'
 class Info extends React.Component {
     render() {
         return (
-            <div><div className="gradient-background">
-                <Title />
-            </div>
-                <div className='bbstyle'>
+            <div>
+                <div className="gradient-background-title">
+                    <Title />
+                </div>
+                <div className='container bbstyle'>
                     <div className='row'>
                         <div className='col-md-12'>
                             <div className='col-md-12' id='image'>
@@ -26,7 +27,7 @@ class Info extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         )
     }
 }

@@ -1,15 +1,15 @@
-.card {
+.patient-card {
     font-family: 'Montserrat', sans-serif;
     padding: 20px;
-    opacity: .9;
+    margin-top: 40px;
 }
 
-.card-header {
+.patient-card-header {
     font-style: italic;
     font-size: 25px;
 }
 
-.card-body {
+.patient-card-body {
     margin-top: 5px;
     font-size: 15px;
 }

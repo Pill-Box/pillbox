@@ -2,6 +2,10 @@
     text-align: left; 
 }
 
+#logoImg {
+    width: 200px;
+}
+
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 
