@@ -7,6 +7,17 @@ module.exports = app => {
       res.json(dbPost);
     });
   });
+
+  app.delete('/api/Rxs/:id', (req, res) => {
+    db.Rx.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
 }
 
 

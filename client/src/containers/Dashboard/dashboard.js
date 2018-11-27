@@ -5,6 +5,8 @@ import { Rx } from '../../components/PatientCard/rx'
 import TabScreens from '../../components/Sidebar/bottomBar'
 import axios from 'axios'
 import './dashboard.css'
+import DeleteBtn from '../../components/DeleteButton/deleteBtn'
+import { relativeTimeThreshold } from '../../../../node_modules/moment';
 
 
 class Dashboard extends React.Component {
@@ -58,6 +60,18 @@ class Dashboard extends React.Component {
             );
     }
 
+    deleteRx = id => {
+        axios.delete('/api/Rxs/' + id)
+            .then(res => this.loadUser())
+            .catch(err => console.log(err));
+    };
+
+    deletePatient = id => {
+        axios.delete('/api/user/patient/' + id)
+            .then(res => this.loadUser())
+            .catch(err => console.log(err));
+    };
+
     handleInputChange = event => {
         const { name, value } = event.target
         this.setState({
@@ -73,18 +87,24 @@ class Dashboard extends React.Component {
                 <div className="container">
                     <div className='row dashboard'>
                         <div className='col-md-12 patient-cards'>
-                            {this.state.patients.map(patient => (
+                                             {this.state.patients.map(patient => (
+                                                                              
                                 <PatientCard
                                     key={patient.id}
-                                >
+                            
+                                    >
                                     {patient.name_first}
-                                    {patient.name_last}
+                                    <DeleteBtn onClick={() => this.deletePatient(patient.id)}/>
+                                 
+              
                                     {patient.Rxes.map(drug => (
-                                        <Rx>
+                                        <Rx key={drug.id}>
                                             {drug.drug_name}
+                                            <DeleteBtn onClick={() => this.deleteRx(drug.id)} />
                                         </Rx>
                                     ))}
                                 </PatientCard>
+                
                             ))}
                             <button className="standard-btn">ADD NEW PATIENT</button>
 

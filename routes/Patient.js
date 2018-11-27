@@ -54,4 +54,14 @@ module.exports = app => {
     });
   })
 
+  app.delete('/api/user/patient/:id', (req, res) => {
+    db.Patient.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
 }
