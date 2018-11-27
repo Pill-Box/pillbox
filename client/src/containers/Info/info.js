@@ -21,9 +21,8 @@ class Info extends React.Component {
                                     Whether you only take one pill once a day, multiple medications, or are a caregiver,
                                 pillBox was designed to help ease the stress of remembering when and how to take medications.</p>
 
-                                <br />
-                                <p className="infoText">GitHub</p>
-                            </div>
+                            <br />
+                            <a href='https://github.com/Pill-Box'><p className="infoText"><i class="fab fa-github"></i></p></a>
                         </div>
                     </div>
                 </div>
