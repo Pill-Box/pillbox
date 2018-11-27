@@ -46,6 +46,23 @@
     cursor: pointer;
 }
 
+.standard-btn, .getRxData {
+    margin-top: 15px;
+    width: 100%;
+    height: 45px;
+    background: rgb(0, 208, 255);
+    border: 0px;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 20px -3px rgba(0, 0, 0, 0.466);
+    font-weight: 600;
+}
+
+.standard-btn:hover, .getRxData:hover {
+    background: rgb(0, 183, 224);
+}
+
+
 
 .bbstyle {
     font-family: 'Montserrat', sans-serif;
