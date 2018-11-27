@@ -54,16 +54,44 @@ class SignUp extends React.Component {
                 .then(response => {
                     if (response.data === 'username or email already taken') {
                         this.setState({
-                            //   showError: true,
-                            //   loginError: true,
-                            //   registerError: false,
+                              showError: true,
+                              loginError: true,
+                              registerError: false,
                         });
                     } else {
                         this.setState({
-                            //   messageFromServer: response.data.message,
-                            //   showError: false,
-                            //   loginError: false,
-                            //   registerError: false,
+                              messageFromServer: response.data.message,
+                              showError: false,
+                              loginError: false,
+                              registerError: false,
+                        });
+
+                        axios.post('/loginUser',
+                            {
+                                username: this.state.username,
+                                password: this.state.password
+                            }
+                        ).then(response => {
+                            if (response.data === 'Bad User Name' || response.data === 'passwords do not match') {
+                                console.log(response.data);
+                                this.setState({
+                                    showError: true,
+                                    showNullError: false,
+                                    redirect: false
+                                });
+                            } else {
+                                console.log('successful login');
+                                localStorage.setItem('JWT', response.data.token);
+                                this.setState({
+                                    loggedIn: true,
+                                    showError: false,
+                                    showENullrror: false,
+                                    redirect: true
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.log(error.data);
                         });
                     }
                 })
@@ -71,11 +99,15 @@ class SignUp extends React.Component {
                     console.log(error.data);
                 });
         }
+
+        if (this.state.username && this.state.password && this.state.firstName && this.state.lastName !== '') {
+            this.setState({ redirect: true })
+        }
     };
 
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to='/login' />
+            return <Redirect to='/dashboard' />
         }
 
         return (
@@ -84,54 +116,56 @@ class SignUp extends React.Component {
                     <Title />
 
                     <div className='signup bbstyle container'>
-                        <h3 className="login-h3">SIGN UP</h3>
+                        <h3 className="login-h3">Sign Up</h3>
                         <div className='row'>
                             <div className='col-md-6'>
-                                <form className='inputForm first' >
+                                <form className='signupFormField'>
+                                    <label for="firstName" class="signupFormLabel">First Name</label>
                                     <FieldGroup
                                         name='firstName'
-                                        id='nameArea'
+                                        id='firstName'
                                         value={this.state.firstName}
                                         onChange={this.handleInput}
-                                        placeholder='First Name'
                                     />
                                 </form>
                             </div>
-                            <br />
+
                             <div className='col-md-6 last'>
-                                <form className='inputForm' >
+                                <form>
+                                    <label for="lastName" class="signupFormLabel">Last Name</label>
                                     <FieldGroup
                                         name='lastName'
-                                        id='nameArea'
+                                        id='lastName'
                                         value={this.state.lastName}
                                         onChange={this.handleInput}
-                                        placeholder='Last Name'
                                     />
                                 </form>
                             </div>
-                            <br />
+
                         </div>
-                        <br />
+
                         <div className='row'>
                             <div className='col-md-12'>
-                                <form className='inputForm' >
+                                <form>
+                                <label for="username" class="signupFormLabel">User Name</label>
                                     <FieldGroup
                                         name='username'
-                                        id='nameArea'
+                                        id='username'
                                         value={this.state.username}
                                         onChange={this.handleInput}
-                                        placeholder='Username'
                                     />
                                 </form>
                             </div>
                         </div>
-                        <br />
+
                         <div className='row'>
                             <div className='col-md-6'>
-                                <form className='inputForm first' >
+                                <form>
+                                    <label for="password" class="signupFormLabel">Password</label>
                                     <FieldGroup
                                         name='password'
                                         id='password'
+                                        type='password'
                                         value={this.state.password}
                                         onChange={this.handleInput}
                                         placeholder='Password'
@@ -139,16 +173,19 @@ class SignUp extends React.Component {
                                 </form>
                             </div>
                             <div className='col-md-6'>
-                                <form className='inputForm first' >
+                                <form>
+                                    <label for="confirmPassword" class="signupFormLabel">Confirm Password</label>
                                     <FieldGroup
-                                        name='password'
-                                        id='password'
-                                        value={this.state.password}
+                                        name='confirmPassword'
+                                        id='confirmPassword'
+                                        type='password'
+                                        value={this.state.confirmPassword}
                                         onChange={this.handleInput}
                                         placeholder='Confirm Password'
                                     />
                                 </form>
                                 <input id='submit' type='submit' value='SUBMIT' onClick={this.registerUser} />
+                                <a href="login">Already signed up? Go to the Login screen.</a>
                             </div>
                         </div>
                     </div>
