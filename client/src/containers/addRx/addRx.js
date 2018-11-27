@@ -121,7 +121,7 @@ class AddRx extends Component {
                 <div className="container bbstyle addRx-box">
                     <div className="row">
                         <div className="col-md-12">
-                        <h3 className="login-h3">ADD PATIENT</h3>
+                        <h3 className="login-h3">ADD PRESCRIPTION</h3>
                             <div className="form-group formStyle borderOrange">
                                 <select className="form-control formFieldsStyle"
                                     value={optionItems.key}
