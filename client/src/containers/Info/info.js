@@ -23,7 +23,7 @@ class Info extends React.Component {
                                 pillBox was designed to help ease the stress of remembering when and how to take medications.</p>
 
                             <br />
-                            <p className="infoText">GitHub</p>
+                            <a href='https://github.com/Pill-Box'><p className="infoText"><i class="fab fa-github"></i></p></a>
                         </div>
                     </div>
                 </div>

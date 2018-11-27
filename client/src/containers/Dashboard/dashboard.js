@@ -5,9 +5,8 @@ import { Rx } from '../../components/PatientCard/rx'
 import TabScreens from '../../components/Sidebar/bottomBar'
 import axios from 'axios'
 import './dashboard.css'
-import DeleteBtn from '../../components/DeleteButton/deleteBtn'
-import { relativeTimeThreshold } from '../../../../node_modules/moment';
-
+import DeleteBtn from '../../components/Buttons/deleteBtn'
+import RxModalBtn from '../../components/Buttons/ModalBtn'
 
 class Dashboard extends React.Component {
 
@@ -79,6 +78,10 @@ class Dashboard extends React.Component {
         })
     }
 
+    handleRxModal = e => {
+        return null
+    }
+
     render() {
 
         return (
@@ -87,16 +90,16 @@ class Dashboard extends React.Component {
                 <div className="container">
                     <div className='row dashboard'>
                         <div className='col-md-12 patient-cards'>
-                                             {this.state.patients.map(patient => (
-                                                                              
+                            {this.state.patients.map(patient => (
+
                                 <PatientCard
-                                    key={patient.id}
-                            
-                                    >
-                                    {patient.name_first}
-                                    <DeleteBtn onClick={() => this.deletePatient(patient.id)}/>
-                                 
-              
+                                    key={patient.id}                       >
+                                    <RxModalBtn onClick={() => this.handleRxModal(patient.id)} />
+                                    <DeleteBtn onClick={() => this.deletePatient(patient.id)} />
+                                    {patient.name_first} 
+                                    {patient.name_last}               
+
+
                                     {patient.Rxes.map(drug => (
                                         <Rx key={drug.id}>
                                             {drug.drug_name}
@@ -104,7 +107,7 @@ class Dashboard extends React.Component {
                                         </Rx>
                                     ))}
                                 </PatientCard>
-                
+
                             ))}
                         </div>
                     </div>
