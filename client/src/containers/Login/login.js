@@ -88,13 +88,6 @@ class Login extends React.Component {
                                             onChange={this.handleInput}
                                             placeholder='username'
                                         />
-                                    </form>
-                                </div>
-                            </div>
-                            <br />
-                            <div className='row' >
-                                <div className='col-md-12'>
-                                    <form className='inputForm' >
                                         <FieldGroup
                                             name='password'
                                             id='nameArea'

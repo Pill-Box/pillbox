@@ -86,6 +86,8 @@ class Dashboard extends React.Component {
                                     ))}
                                 </PatientCard>
                             ))}
+                            <button className="standard-btn">ADD NEW PATIENT</button>
+
                         </div>
                     </div>
                 </div>
