@@ -2,6 +2,7 @@ import React from 'react'
 import TabScreens from '../../components/Sidebar/bottomBar'
 import './addPatient.css'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 import Title from '../../components/Title/title'
 
 
@@ -11,7 +12,8 @@ class AddPatient extends React.Component {
         patients: [],
         firstName: "",
         lastName: "",
-        userId: ""
+        userId: "",
+        redirect: false
     };
 
     async componentDidMount() {
@@ -58,10 +60,22 @@ class AddPatient extends React.Component {
             name_first: this.state.firstName,
             name_last: this.state.lastName,
             UserId: this.state.userId
+        }).then(response => {
+            
+            if (response !== null) {
+                console.log("patient inserted");
+                this.setState({ redirect: true })
+            } else {
+                console.log("patient NOT inserted"); 
+            }
         })
       };
 
     render() {
+        if (this.state.redirect === true) {
+            return <Redirect to='/dashboard' />
+        }
+
         return (
             <div className="dashboard-body gradient-background">
             <Title /> 

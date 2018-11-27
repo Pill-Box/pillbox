@@ -1,6 +1,4 @@
-/* * {
-  margin: 0;
-} */
+
 
 /* .boxStyle {
     font-family: 'Montserrat', sans-serif;
@@ -48,6 +46,23 @@
     cursor: pointer;
 }
 
+.standard-btn, .getRxData {
+    margin-top: 15px;
+    width: 100%;
+    height: 45px;
+    background: rgb(0, 208, 255);
+    border: 0px;
+    font-size: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 20px -3px rgba(0, 0, 0, 0.466);
+    font-weight: 600;
+}
+
+.standard-btn:hover, .getRxData:hover {
+    background: rgb(0, 183, 224);
+}
+
+
 
 .bbstyle {
     font-family: 'Montserrat', sans-serif;
@@ -55,19 +70,18 @@
     background: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     font-size: 20px;
-    text-align: center;
     border-radius: 10px;
     padding: 50px;
-    font-weight: bold;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+    box-shadow: 3px 3px 20px -3px rgba(0, 0, 0, 0.568);
 }
 
 
 .gradient-background {
-    background: linear-gradient(135deg, rgb(6, 172, 209) 0%, rgba(3,113,150,1) 100%);
+    background: linear-gradient(135deg, rgb(0, 162, 199) 0%, rgb(0, 89, 119) 100%);
     height: 100%;
     min-height: 1100px;
 }
