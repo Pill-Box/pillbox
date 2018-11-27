@@ -116,9 +116,10 @@ class AddRx extends Component {
         return (
             <div className="gradient-background">
             <Title/>
-                <div className="container">
+                <div className="container bbstyle addRx-box">
                     <div className="row">
                         <div className="col-md-12">
+                        <h3 className="login-h3">ADD PATIENT</h3>
                             <div className="form-group formStyle borderOrange">
                                 <select className="form-control formFieldsStyle"
                                     value={optionItems.key}
@@ -157,12 +158,14 @@ class AddRx extends Component {
                                     name="sig"
                                     onChange={this.handleInputChange}
                                 />
-                                <input type="text" className="form-control formFieldsStyle" placeholder="Frequency"
+
+                                {/* <input type="text" className="form-control formFieldsStyle" placeholder="Frequency"
                                     value={this.state.frequency}
                                     name="frequency"
                                     onChange={this.handleInputChange}
-                                />
-                                <select className="form-control formFieldsStyle" id="timeOfDay" placeholder="Time of Day"
+                                /> */}
+
+                                <select className="form-control formFieldsStyle" id="timeOfDay" placeholder="Per Day"
                                     value={this.state.perday}
                                     name="perDay"
                                     onChange={this.handleInputChange}
@@ -210,12 +213,11 @@ class AddRx extends Component {
                                     onChange={this.handleInputChange}
                                 />
                                 <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary getRxData">Submit</button>
-
                             </div>
                         </div>
                     </div>
-                    <TabScreens />
                 </div>
+                <TabScreens />
             </div>
         ) //return
     } //render

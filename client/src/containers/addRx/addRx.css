@@ -12,11 +12,14 @@
     width: 100%;
     height: 45px;
     background: rgb(0, 208, 255);
-    margin-bottom: 100px;
     border: 0px;
     font-size: 20px;
 }
 
 .standard-btn:hover, .getRxData:hover {
     background: rgb(0, 183, 224);
+}
+
+.addRx-box {
+    margin-bottom: 150px;
 }
