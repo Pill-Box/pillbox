@@ -3,23 +3,27 @@
     padding: 1em;
 }
 
-.formFieldsStyle {
-    margin: 1em 0 1em 0;
+.formFieldsStyleAddRx {
+    margin: 0 0 .5em 0;
 }
 
-.standard-btn, .getRxData {
-    margin-top: 10px;
-    width: 100%;
-    height: 45px;
-    background: rgb(0, 208, 255);
-    border: 0px;
-    font-size: 20px;
-}
-
-.standard-btn:hover, .getRxData:hover {
-    background: rgb(0, 183, 224);
-}
 
 .addRx-box {
     margin-bottom: 150px;
+}
+
+.addRxFormLabel {
+    margin: 0;
+    font-size: .8em;
+    text-align: left;
+    line-height: 1;
+    Font-weight: bold
+}
+
+.addRxFormLabelExample {
+    margin: 0;
+    font-size: .6em;
+    text-align: left;
+    line-height: 1;
+    Font-weight: bold
 }

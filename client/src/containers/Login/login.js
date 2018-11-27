@@ -30,8 +30,7 @@ class Login extends React.Component {
                 loggedIn: false,
             });
         } else {
-            axios
-                .post('/loginUser',
+            axios.post('/loginUser',
                     {
                         username: this.state.username,
                         password: this.state.password
