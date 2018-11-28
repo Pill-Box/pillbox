@@ -17,12 +17,18 @@ class Dashboard extends React.Component {
         drugNames: [],
         userId: "",
         show: false,
+<<<<<<< HEAD
         addPatient: false,
         patientId: '',
         firstName: "",
         lastName: "",
         redirect: false
     };
+=======
+        patientId: '',
+        isLoggedIn: ''
+    }
+>>>>>>> 93346ee109635af117a32cdc5a27e2ab77a6f698
 
     async componentDidMount() {
 
