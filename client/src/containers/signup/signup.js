@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Title from '../../components/Title/title'
 import FieldGroup from '../../components/Fieldgroup'
+import { Message } from '../../components/Message/message'
 import { Redirect } from 'react-router-dom'
 import './signup.css'
 
@@ -9,9 +10,12 @@ class SignUp extends React.Component {
     state = {
         username: '',
         password: '',
+        confirmPassword: '',
         firstName: '',
         lastName: '',
-        redirect: false
+        redirect: false,
+        error: false,
+        errorMessage: ''
     }
 
     handleInput = e => {
@@ -26,7 +30,25 @@ class SignUp extends React.Component {
         console.log(`Password is ${password}`)
         console.log(`Name is ${firstName} ${lastName}`)
         if (this.state.username && this.state.password && this.state.firstName && this.state.lastName !== '') {
-            this.setState({ redirect: true })
+            if (this.state.password === this.state.confirmPassword) {
+                this.setState({ 
+                    redirect: true,
+                    error: true,
+                    errorMessage: 'Passwords Do Not Match'
+                })
+            } else if (this.state.password !== this.state.confirmPassword) {
+                this.setState({ 
+                    redirect: false,
+                    error: true,
+                    errorMessage: 'Passwords Do Not Match'
+                })
+            }
+        } else {
+            this.setState({ 
+                redirect: false,
+                error: true,
+                errorMessage: 'One or more fields is blank'
+            })
         }
     }
 
@@ -57,6 +79,8 @@ class SignUp extends React.Component {
                             showError: true,
                             loginError: true,
                             registerError: false,
+                            error: true,
+                            errorMessage: response.data
                         });
                     } else {
                         this.setState({
@@ -72,7 +96,7 @@ class SignUp extends React.Component {
                                 password: this.state.password
                             }
                         ).then(response => {
-                            if (response.data === 'Bad User Name' || response.data === 'passwords do not match') {
+                            if (response.data === 'Login failed') {
                                 console.log(response.data);
                                 this.setState({
                                     showError: true,
@@ -169,7 +193,7 @@ class SignUp extends React.Component {
                                     <label htmlFor="password" className="signupFormLabel">Password</label>
                                     <FieldGroup
                                         name='password'
-                                        id='password'
+                                        id='signupPassword'
                                         type='password'
                                         value={this.state.password}
                                         onChange={this.handleInput}
@@ -192,6 +216,7 @@ class SignUp extends React.Component {
                             </div>
                                 <input id='submit' type='submit' value='SUBMIT' onClick={this.registerUser} />
                                 <a href="login">Already signed up? Go to the Login screen.</a>
+                                {this.state.error ? <Message key='1'> {this.state.errorMessage} </Message> : null}
                         </div>
                     </div>
                 </div>
