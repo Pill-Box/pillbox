@@ -33,7 +33,7 @@ class AddRx extends Component {
 
     async componentDidMount() {
         let accessString = localStorage.getItem('JWT');
-        // console.log(accessString);
+        console.log(accessString);
         if (accessString == null) {
             this.setState({
                 isLoading: false,
@@ -176,7 +176,7 @@ class AddRx extends Component {
                                 <label for="doseInterval" class="addRxFormLabel">How Often</label>
                                 <select className="form-control formFieldsStyleAddRx" id="doseInterval"
                                     value={this.state.doseInterval}
-                                    name="perDay"
+                                    name="doseInterval"
                                     onChange={this.handleInputChange}
                                 >
                                     <option value=""></option>
