@@ -28,7 +28,8 @@ class AddRx extends Component {
         Name_Last: "",
         patients: [],
         userId: "",
-        redirect: false
+        redirect: false,
+        isLoggedIn: ''
     };
 
     async componentDidMount() {
@@ -36,7 +37,7 @@ class AddRx extends Component {
         console.log(accessString);
         if (accessString == null) {
             this.setState({
-                isLoading: false,
+                isLoggedIn: false,
                 error: true,
             });
         } else {
@@ -50,7 +51,7 @@ class AddRx extends Component {
                 .then(response => {
                     this.setState({
                         userId: response.data.id,
-                        isLoading: false,
+                        isLoggedIn: true,
                         error: false,
                     });
                 })
@@ -115,6 +116,10 @@ class AddRx extends Component {
     render() {
         if (this.state.redirect === true) {
             return <Redirect to='/dashboard' />
+        }
+
+        if (this.state.isLoggedIn === false) {
+            window.location.href = '/login'
         }
 
         let optionItems = this.state.patients.map(patient => 

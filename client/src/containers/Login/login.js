@@ -104,7 +104,7 @@ class Login extends React.Component {
                             <br />
                             <input id='submit' type='submit' value='SUBMIT' onClick={this.handleSubmit} />
                             <br />
-                            <p>Forgot your password?{'    '}<a href='/reset'>Reset it!</a></p>
+                            {/* <p>Forgot your password?{'    '}<a href='/reset'>Reset it!</a></p> */}
                         </div>
                     </div>
                 </div>

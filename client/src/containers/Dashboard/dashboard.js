@@ -25,8 +25,8 @@ class Dashboard extends React.Component {
         console.log(accessString);
         if (accessString == null) {
             this.setState({
-                isLoading: false,
                 error: true,
+                isLoggedIn: false
             });
         } else {
             await axios
@@ -34,19 +34,21 @@ class Dashboard extends React.Component {
                     params: {
                         username: this.props.match.params.username,
                     },
-                    headers: { Authorization: `JWT ${accessString}` },
+                    headers: { 
+                        Authorization: `JWT ${accessString}` 
+                    }
                 })
                 .then(response => {
                     this.setState({
                         userId: response.data.id,
-                        isLoading: false,
                         error: false,
+                        isLoggedIn: true
                     });
                 })
                 .catch(error => {
                     console.log(error.data);
                 });
-        }
+        } 
 
         this.loadUser();
     }
@@ -91,6 +93,9 @@ class Dashboard extends React.Component {
     handleHideModal = () => this.setState({ show: false })
 
     render() {
+        if (this.state.isLoggedIn === false) {
+            window.location.href = '/login'
+        }
 
         return (
             <div className="dashboard-body gradient-background">
@@ -135,7 +140,7 @@ class Dashboard extends React.Component {
                                     {patient.name_last}
                                     {patient.Rxes.map(drug => (
                                         <Rx key={drug.id}>
-                                            <strong><i class="fas fa-prescription-bottle-alt"></i>{'    '}</strong> {drug.drug_name} {' '}|{'  '}<strong><i class="far fa-clock"></i>{'  '}</strong> {drug.time_of_day}
+                                            <strong><i className="fas fa-prescription-bottle-alt"></i>{'    '}</strong> {drug.drug_name} {' '}|{'  '}<strong><i className="far fa-clock"></i>{'  '}</strong> {drug.time_of_day}
                                             <DeleteBtn onClick={() => this.deleteRx(drug.id)} />
                                         </Rx>
                                     ))}
