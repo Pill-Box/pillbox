@@ -10,8 +10,7 @@ export const PatientCard = ({ children }) => (
             <hr />
             <div className="patient-card-body">
                 {console.log(children)}
-                <h6 className="card-text">{children[4]}</h6>
-
+                <p className="card-text">{children[4]} {children[5]}</p>
             </div>
         </div>
         <br />
