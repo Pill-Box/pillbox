@@ -12,6 +12,10 @@ class Login extends React.Component {
         redirect: false
     }
 
+    componentDidMount() {
+        localStorage.removeItem('JWT')
+    }
+
     handleInput = e => {
         const { name, value } = e.target
         this.setState({ [name]: value })

@@ -5,12 +5,12 @@ export const PatientCard = ({ children }) => (
     <div>
         <div className="card">
             <div className="card-header">
-                {children[0]} {children[1]} {children[2]} {children[3]} 
+                <h4>{children[0]} {children[1]} {children[2]} {children[3]}</h4>
             </div>
             <hr />
             <div className="card-body">
                 {console.log(children)}
-                <p className="card-text">{children[4]}</p>
+                <h6 className="card-text">{children[4]}</h6>
 
             </div>
         </div>
