@@ -7,13 +7,16 @@ import axios from 'axios'
 import './dashboard.css'
 import DeleteBtn from '../../components/Buttons/deleteBtn'
 import RxModalBtn from '../../components/Buttons/ModalBtn'
+import RxModal from '../../components/RxModal/rxModal'
 
 class Dashboard extends React.Component {
 
     state = {
         patients: [],
         drugNames: [],
-        userId: ""
+        userId: "",
+        show: false,
+        patientId: ''
     }
 
     async componentDidMount() {
@@ -78,9 +81,13 @@ class Dashboard extends React.Component {
         })
     }
 
-    handleRxModal = e => {
-        return null
+    handleRxModal = id => {
+        console.log(id)
+        this.setState({ show: true, patientId: id })
+
     }
+
+    handleHideModal = () => this.setState({ show: false })
 
     render() {
 
@@ -89,17 +96,39 @@ class Dashboard extends React.Component {
                 <Title />
                 <div className="container">
                     <div className='row dashboard'>
+
+                        {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
+                            <RxModal
+                                show={this.state.show}
+                                handleClose={this.handleHideModal}
+                                key={patient.id}>
+                                <strong>{patient.name_first}</ strong>
+                                <strong>{patient.name_last}</strong>
+                                <hr />
+                                {patient.Rxes.map(drug => (
+                                    <Rx key={drug.id}>
+                                        Medication: {drug.drug_name}<br />
+                                        Prescription Number: {drug.rx_num}<br />
+                                        Refills: {drug.refills}<br />
+                                        Quantity Dispensed: {drug.dispensed_qty}<br />
+                                        Frequency: {drug.frequency}<br />
+                                        Usage Per Day: {drug.perDay}<br />
+                                        Time of Day: {drug.time_of_day}<br />
+                                        Prescriber: {drug.prescriber}<br />
+                                        Notes: {drug.notes}<br />
+                                    </Rx>
+                                ))}
+                            </RxModal>
+                        ))}
+
                         <div className='col-md-12 patient-cards'>
                             {this.state.patients.map(patient => (
-
                                 <PatientCard
-                                    key={patient.id}                       >
+                                    key={patient.id}>
                                     <RxModalBtn onClick={() => this.handleRxModal(patient.id)} />
                                     <DeleteBtn onClick={() => this.deletePatient(patient.id)} />
-                                    {patient.name_first} 
-                                    {patient.name_last}               
-
-
+                                    {patient.name_first}
+                                    {patient.name_last}
                                     {patient.Rxes.map(drug => (
                                         <Rx key={drug.id}>
                                             {drug.drug_name}
@@ -109,7 +138,7 @@ class Dashboard extends React.Component {
                                 </PatientCard>
 
                             ))}
-                            <button className="standard-btn">ADD NEW PATIENT</button>
+                            <a href='/addpatient'><button className="standard-btn">ADD NEW PATIENT</button></a>
 
                         </div>
                     </div>
