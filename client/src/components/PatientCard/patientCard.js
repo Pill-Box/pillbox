@@ -3,15 +3,14 @@ import './patientCard.css'
 
 export const PatientCard = ({ children }) => (
     <div>
-        <div className="card">
-            <div className="card-header">
+        <div className="patient-card">
+            <div className="patient-card-header">
                 {children[0]} {children[1]} {children[2]} {children[3]} 
             </div>
             <hr />
-            <div className="card-body">
+            <div className="patient-card-body">
                 {console.log(children)}
                 <p className="card-text">{children[4]}</p>
-
             </div>
         </div>
         <br />

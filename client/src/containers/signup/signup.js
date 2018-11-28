@@ -54,16 +54,16 @@ class SignUp extends React.Component {
                 .then(response => {
                     if (response.data === 'username or email already taken') {
                         this.setState({
-                              showError: true,
-                              loginError: true,
-                              registerError: false,
+                            showError: true,
+                            loginError: true,
+                            registerError: false,
                         });
                     } else {
                         this.setState({
-                              messageFromServer: response.data.message,
-                              showError: false,
-                              loginError: false,
-                              registerError: false,
+                            messageFromServer: response.data.message,
+                            showError: false,
+                            loginError: false,
+                            registerError: false,
                         });
 
                         axios.post('/loginUser',
@@ -90,9 +90,9 @@ class SignUp extends React.Component {
                                 });
                             }
                         })
-                        .catch(error => {
-                            console.log(error.data);
-                        });
+                            .catch(error => {
+                                console.log(error.data);
+                            });
                     }
                 })
                 .catch(error => {
@@ -116,11 +116,12 @@ class SignUp extends React.Component {
                     <Title />
 
                     <div className='signup bbstyle container'>
-                        <h3 className="login-h3">Sign Up</h3>
+                        <h3 className="login-h3">SIGN UP</h3>
+                        <br/>
                         <div className='row'>
                             <div className='col-md-6'>
-                                <form className='signupFormField'>
-                                    <label for="firstName" class="signupFormLabel">First Name</label>
+                                <form className="signupFormField">
+                                    <label htmlFor="firstName" className="signupFormLabel">First Name</label>
                                     <FieldGroup
                                         name='firstName'
                                         id='firstName'
@@ -131,8 +132,8 @@ class SignUp extends React.Component {
                             </div>
 
                             <div className='col-md-6 last'>
-                                <form>
-                                    <label for="lastName" class="signupFormLabel">Last Name</label>
+                            <form className="signupFormField">
+                                    <label htmlFor="lastName" className="signupFormLabel">Last Name</label>
                                     <FieldGroup
                                         name='lastName'
                                         id='lastName'
@@ -144,10 +145,12 @@ class SignUp extends React.Component {
 
                         </div>
 
+                        <br/>
+
                         <div className='row'>
                             <div className='col-md-12'>
-                                <form>
-                                <label for="username" class="signupFormLabel">User Name</label>
+                            <form className="signupFormField">
+                                    <label htmlFor="username" className="signupFormLabel">User Name</label>
                                     <FieldGroup
                                         name='username'
                                         id='username'
@@ -158,10 +161,12 @@ class SignUp extends React.Component {
                             </div>
                         </div>
 
+                        <br/>
+
                         <div className='row'>
                             <div className='col-md-6'>
-                                <form>
-                                    <label for="password" class="signupFormLabel">Password</label>
+                            <form className="signupFormField">
+                                    <label htmlFor="password" className="signupFormLabel">Password</label>
                                     <FieldGroup
                                         name='password'
                                         id='password'
@@ -173,8 +178,8 @@ class SignUp extends React.Component {
                                 </form>
                             </div>
                             <div className='col-md-6'>
-                                <form>
-                                    <label for="confirmPassword" class="signupFormLabel">Confirm Password</label>
+                            <form className="signupFormField">
+                                    <label htmlFor="confirmPassword" className="signupFormLabel">Confirm Password</label>
                                     <FieldGroup
                                         name='confirmPassword'
                                         id='confirmPassword'
@@ -184,9 +189,9 @@ class SignUp extends React.Component {
                                         placeholder='Confirm Password'
                                     />
                                 </form>
+                            </div>
                                 <input id='submit' type='submit' value='SUBMIT' onClick={this.registerUser} />
                                 <a href="login">Already signed up? Go to the Login screen.</a>
-                            </div>
                         </div>
                     </div>
                 </div>

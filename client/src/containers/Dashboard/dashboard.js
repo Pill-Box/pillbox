@@ -7,6 +7,7 @@ import axios from 'axios'
 import './dashboard.css'
 import DeleteBtn from '../../components/Buttons/deleteBtn'
 import RxModalBtn from '../../components/Buttons/ModalBtn'
+import AddPatientModal from '../../components/addPatientModal/addPatientModal'
 
 class Dashboard extends React.Component {
 
@@ -109,12 +110,14 @@ class Dashboard extends React.Component {
                                 </PatientCard>
 
                             ))}
+
                             <button className="standard-btn">ADD NEW PATIENT</button>
 
                         </div>
                     </div>
+                    <AddPatientModal />    
                 </div>
-                <TabScreens />
+
             </div>
 
         )
