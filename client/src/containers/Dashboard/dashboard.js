@@ -150,6 +150,9 @@ class Dashboard extends React.Component {
                                         Usage Per Day: {drug.perDay}<br />
                                         Time of Day: {drug.time_of_day}<br />
                                         Prescriber: {drug.prescriber}<br />
+                                        Prescriber Number: {drug.prescriber_number}<br />
+                                        Pharmacist: {drug.pharmacist}<br />
+                                        Pharmacy Number: {drug.pharmacy_number}<br />
                                         Notes: {drug.notes}<br />
                                     </Rx>
                                 ))}
