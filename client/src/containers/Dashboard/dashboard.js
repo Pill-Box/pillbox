@@ -16,7 +16,8 @@ class Dashboard extends React.Component {
         drugNames: [],
         userId: "",
         show: false,
-        patientId: ''
+        patientId: '',
+        isLoggedIn: ''
     }
 
     async componentDidMount() {

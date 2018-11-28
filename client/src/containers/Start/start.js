@@ -3,6 +3,13 @@ import './start.css'
 import Title from '../../components/Title/title'
 
 class Start extends React.Component {
+
+    removeToken = () => {
+        localStorage.removeItem('JWT')
+        let accessString = localStorage.getItem('JWT');
+        console.log(accessString);
+    }
+
     render() {
         return (
             <div>
