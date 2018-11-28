@@ -7,11 +7,8 @@ import axios from 'axios'
 import './dashboard.css'
 import DeleteBtn from '../../components/Buttons/deleteBtn'
 import RxModalBtn from '../../components/Buttons/ModalBtn'
-<<<<<<< HEAD
 import AddPatientModal from '../../components/addPatientModal/addPatientModal'
-=======
 import RxModal from '../../components/RxModal/rxModal'
->>>>>>> 5325a38794c9dedd9452aaf24ab2a79a71d7b5ce
 
 class Dashboard extends React.Component {
 
@@ -20,39 +17,70 @@ class Dashboard extends React.Component {
         drugNames: [],
         userId: "",
         show: false,
-        patientId: ''
-    }
+        addPatient: false,
+        patientId: '',
+        firstName: "",
+        lastName: "",
+        redirect: false
+    };
 
     async componentDidMount() {
+
         let accessString = localStorage.getItem('JWT');
         console.log(accessString);
         if (accessString == null) {
-            this.setState({
-                isLoading: false,
-                error: true,
-            });
+          this.setState({
+            isLoading: false,
+            error: true,
+          });
         } else {
-            await axios
-                .get('/findUser', {
-                    params: {
-                        username: this.props.match.params.username,
-                    },
-                    headers: { Authorization: `JWT ${accessString}` },
-                })
-                .then(response => {
-                    this.setState({
-                        userId: response.data.id,
-                        isLoading: false,
-                        error: false,
-                    });
-                })
-                .catch(error => {
-                    console.log(error.data);
-                });
+          await axios
+            .get('/findUser', {
+              params: {
+                username: this.props.match.params.username,
+              },
+              headers: { Authorization: `JWT ${accessString}` },
+            })
+            .then(response => {
+              this.setState({
+                userId: response.data.id,
+                isLoading: false,
+                error: false,
+              });
+            })
+            .catch(error => {
+              console.log(error.data);
+            });
         }
 
         this.loadUser();
     }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        console.log("CLICK")
+        axios.post('/api/patients', {
+            name_first: this.state.firstName,
+            name_last: this.state.lastName,
+            UserId: this.state.userId
+        }).then(response => {
+            
+            if (response !== null) {
+                console.log("patient inserted");
+                this.setState({ redirect: true })
+            } else {
+                console.log("patient NOT inserted"); 
+            }
+        })
+      };
+
 
     loadUser = () => {
         axios.get('/api/user/patient/rx/' + this.state.userId)
@@ -92,6 +120,9 @@ class Dashboard extends React.Component {
     }
 
     handleHideModal = () => this.setState({ show: false })
+
+    showAddPatient = () => this.setState({ addPatient: true })
+    hideAddPatient = () => this.setState({ addPatient: false })
 
     render() {
 
@@ -142,14 +173,19 @@ class Dashboard extends React.Component {
                                 </PatientCard>
 
                             ))}
-                            
-                            <a href='/addpatient'><button className="standard-btn">ADD NEW PATIENT</button></a>
+
+                            <AddPatientModal
+                                show={this.state.addPatient}
+                                handleClose={this.hideAddPatient}
+                                        
+                            />
+
+                            <button onClick={() => this.showAddPatient()} className="standard-btn">ADD NEW PATIENT</button>
 
                         </div>
                     </div>
-                    <AddPatientModal />    
                 </div>
-
+                <TabScreens />
             </div>
 
         )

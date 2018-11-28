@@ -8,8 +8,7 @@ class TabScreens extends React.Component {
             <div className='bottomNav'>
                 <div className='row'>
 
-                                <div className='col-md-3 bar-cols'>
-                  
+                    <div className='col-md-3 bar-cols'>
                         <a href='/dashboard' data-toggle="tooltip" data-placement="top" title="Dashboard"><i className="fas fa-home"></i></a>
                     </div>
                   
@@ -21,7 +20,6 @@ class TabScreens extends React.Component {
                     </div>
                     <div className='col-md-3 bar-cols'>
                         <a href='/signout' data-toggle="tooltip" data-placement="top" title="Sign Out"><i className="fas fa-sign-out-alt"></i></a>
-
                     </div>
                 </div>
             </div>
