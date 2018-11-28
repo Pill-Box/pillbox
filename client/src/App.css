@@ -106,6 +106,13 @@ input#nameArea.form-control {
     padding: 10px;
 }
 
+input#password.form-control {
+    border: 1px solid rgba(0, 0, 0, 0.39);
+    border-radius: 2px;
+    padding: 10px;
+}
+
+
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) 

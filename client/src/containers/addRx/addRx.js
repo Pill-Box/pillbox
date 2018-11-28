@@ -123,7 +123,7 @@ class AddRx extends Component {
         }
 
         let optionItems = this.state.patients.map(patient => 
-            <option key={patient.id} value={patient.id}>{patient.name_first}</option>
+            <option key={patient.id} value={patient.id}>{patient.name_first} {patient.name_last}</option>
         );
         
         return (
