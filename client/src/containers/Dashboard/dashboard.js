@@ -134,7 +134,7 @@ class Dashboard extends React.Component {
                                     {patient.name_last}
                                     {patient.Rxes.map(drug => (
                                         <Rx key={drug.id}>
-                                            {drug.drug_name}
+                                            <strong><i class="fas fa-prescription-bottle-alt"></i>{'    '}</strong> {drug.drug_name} {' '}|{'  '}<strong><i class="far fa-clock"></i>{'  '}</strong> {drug.time_of_day}
                                             <DeleteBtn onClick={() => this.deleteRx(drug.id)} />
                                         </Rx>
                                     ))}
