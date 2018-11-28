@@ -127,9 +127,9 @@ class AddRx extends Component {
                 <div className="container bbstyle addRx-box">
                     <div className="row">
                         <div className="col-md-12">
-                        <h3 className="login-h3">Add Prescription</h3>
+                        <h3 className="login-h3">ADD PRESCRIPTION</h3>
                             <div className="form-group formStyle">
-                                <label for="patientName" class="addRxFormLabel">Patient Name</label>
+                                <label htmlFor="patientName" className="addRxFormLabel">Patient Name</label>
                                 <select className="form-control formFieldsStyleAddRx" id="patientName"
                                     value={optionItems.key}
                                     name="patientId"
@@ -137,43 +137,43 @@ class AddRx extends Component {
                                 >
                                     {optionItems}
                                 </select>
-                                <label for="rx_num" class="addRxFormLabel">Prescription Number</label>
+                                <label htmlFor="rx_num" className="addRxFormLabel">Prescription Number</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="rx_num"
                                     value={this.state.rx_num}
                                     name="rx_num"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="rx_num" class="addRxFormLabel">Drug Name</label>
+                                <label htmlFor="rx_num" className="addRxFormLabel">Drug Name</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id='drugName'
                                     value={this.state.drugName}
                                     name="drugName"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="ndc" class="addRxFormLabel">NDC - <i>Optional</i></label>
+                                <label htmlFor="ndc" className="addRxFormLabel">NDC - <i>Optional</i></label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="ndc"
                                     value={this.state.ndc}
                                     name="ndc"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="refills" class="addRxFormLabel">Refills</label>
+                                <label htmlFor="refills" className="addRxFormLabel">Refills</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="refills"
                                     value={this.state.refills}
                                     name="refills"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="quantity" class="addRxFormLabel">Quantity Dispensed</label>
+                                <label htmlFor="quantity" className="addRxFormLabel">Quantity Dispensed</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="quantity"
                                     value={this.state.quantityDispensed}
                                     name="quantityDispensed"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="dosage" class="addRxFormLabel">How Many</label>
+                                <label htmlFor="dosage" className="addRxFormLabel">How Many</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="dosage"
                                     value={this.state.doseInterval}
                                     name="doseInterval"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="doseInterval" class="addRxFormLabel">How Often</label>
+                                <label htmlFor="doseInterval" className="addRxFormLabel">How Often</label>
                                 <select className="form-control formFieldsStyleAddRx" id="doseInterval"
                                     value={this.state.doseInterval}
                                     name="doseInterval"
@@ -185,7 +185,7 @@ class AddRx extends Component {
                                     <option value="3">Monthly</option>
                                     <option value="4">As Needed</option>
                                 </select>
-                                <label for="timeOfDay" class="addRxFormLabel">Time of Day - <i>Optional</i></label>
+                                <label htmlFor="timeOfDay" className="addRxFormLabel">Time of Day - <i>Optional</i></label>
                                 <select className="form-control formFieldsStyleAddRx" id="timeOfDay"
                                     value={this.state.timeOfDay}
                                     name="timeOfDay"
@@ -197,38 +197,38 @@ class AddRx extends Component {
                                     <option value="Bedtime">Bedtime</option>
                                     <option value="asNeeded">As Needed</option>
                                 </select>
-                                <label for="SIG" class="addRxFormLabel">Patient Directions - <i>Optional</i></label>
-                                <br/><i class="addRxFormLabelExample">Example: Take one tablet daily by mouth</i>
+                                <label htmlFor="SIG" className="addRxFormLabel">Patient Directions - <i>Optional</i></label>
+                                <br/><i className="addRxFormLabelExample">Example: Take one tablet daily by mouth</i>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="SIG"
                                     value={this.state.sig}
                                     name="sig"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="pharmacist" class="addRxFormLabel">Pharmacist - <i>Optional</i></label>
+                                <label htmlFor="pharmacist" className="addRxFormLabel">Pharmacist - <i>Optional</i></label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="pharmacist"
                                     value={this.state.pharmacist}
                                     name="pharmacist"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="pharmacyContact" class="addRxFormLabel">Pharmacy Contact - <i>Optional</i></label>
+                                <label htmlFor="pharmacyContact" className="addRxFormLabel">Pharmacy Contact - <i>Optional</i></label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="pharmacyContact"
                                     value={this.state.pharmacyContact}
                                     name="pharmacyContact"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="prescriber" class="addRxFormLabel">Prescriber - <i>Optional</i></label>
+                                <label htmlFor="prescriber" className="addRxFormLabel">Prescriber - <i>Optional</i></label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="prescriber"
                                     value={this.state.prescriber}
                                     name="prescriber"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="prescriberContact" class="addRxFormLabel">Prescriber Contact - <i>Optional</i></label>
+                                <label htmlFor="prescriberContact" className="addRxFormLabel">Prescriber Contact - <i>Optional</i></label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="prescriberContact"
                                     value={this.state.prescriberContact}
                                     name="prescriberContact"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="notes" class="addRxFormLabel">Notes - <i>Optional</i></label>
+                                <label htmlFor="notes" className="addRxFormLabel">Notes - <i>Optional</i></label>
                                 <textarea className="form-control formFieldsStyleAddRx" id="notes"
                                     value={this.state.notes}
                                     name="notes"

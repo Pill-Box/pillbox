@@ -7,18 +7,6 @@
     margin: 0 0 .5em 0;
 }
 
-.standard-btn, .getRxData {
-    margin-top: 10px;
-    width: 100%;
-    height: 45px;
-    background: rgb(0, 208, 255);
-    border: 0px;
-    font-size: 20px;
-}
-
-.standard-btn:hover, .getRxData:hover {
-    background: rgb(0, 183, 224);
-}
 
 .addRx-box {
     margin-bottom: 150px;

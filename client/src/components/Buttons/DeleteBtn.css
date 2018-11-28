@@ -2,17 +2,5 @@
   float: right;
   color: rgba(3,113,150,1);
   margin-left: 10px;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.415);
-  border-radius: 2px;
-  background-color: white;
-  padding: 5px;
-  box-shadow: 10px 5px 5px black;
-  -webkit-box-shadow: 1px 1px 8px 3px rgba(0,0,0,0.25); 
-  box-shadow: 1px 1px 8px 3px rgba(0,0,0,0.25);
-  }
-
-  .delete-btn:hover, .rx-modal-btn:hover {
-    cursor:pointer;
-  }
+}
   

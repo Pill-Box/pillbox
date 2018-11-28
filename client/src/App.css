@@ -47,10 +47,10 @@
 }
 
 .standard-btn, .getRxData {
-    margin-top: 15px;
+    margin-top: 25px;
     width: 100%;
     height: 45px;
-    background: rgb(0, 208, 255);
+    background: rgb(62, 220, 255);
     border: 0px;
     font-size: 20px;
     border-radius: 5px;
@@ -59,7 +59,7 @@
 }
 
 .standard-btn:hover, .getRxData:hover {
-    background: rgb(0, 183, 224);
+    background: rgb(28, 213, 255);
 }
 
 
