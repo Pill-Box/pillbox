@@ -7,11 +7,15 @@ import Title from '../../components/Title/title'
 
 
 class AddRx extends Component {
-
+    constructor(props) {
+        super();
+        this.getDailyMedLink = this.getDailyMedLink.bind(this)
+    }
+    
     state = {
         rx_num: "",
         drugName: "",
-        ndc: "",
+        ndc: "https://dailymed.nlm.nih.gov/dailymed/",
         refills: "",
         quantityDispensed: "",
         sig: "",
@@ -34,7 +38,7 @@ class AddRx extends Component {
 
     async componentDidMount() {
         let accessString = localStorage.getItem('JWT');
-        console.log(accessString);
+        // console.log(accessString);
         if (accessString == null) {
             this.setState({
                 isLoggedIn: false,
@@ -66,7 +70,7 @@ class AddRx extends Component {
     loadPatient = () => {
         axios.get('/api/user/patients/' + this.state.userId)
             .then(patientData => {
-                console.log(patientData.data.Patients);
+                // console.log(patientData.data.Patients);
                 this.setState({
                     patients: patientData.data.Patients,
                     patientId: patientData.data.Patients[0].id
@@ -74,6 +78,20 @@ class AddRx extends Component {
             })
             .catch(err => console.log(`Error: ${err}`)
             );
+    }
+
+    getDailyMedLink = () => {
+        let drugName = this.state.drugName
+        let drugNameUpper = drugName.toUpperCase()
+        axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
+        .then(function(response) {
+            console.log(response.data[0].setid)
+            if (response !== null) {
+                this.setState({ ndc: response.data[0].setid })
+            } else {
+                this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
+            }
+        });
     }
 
     handleInputChange = event => {
@@ -86,7 +104,9 @@ class AddRx extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state.patientId);
+
+        // this.getDailyMedLink()
+
         axios.post('/api/Rxs', {
             rx_num: this.state.rx_num,
             drug_name: this.state.drugName,
@@ -111,7 +131,7 @@ class AddRx extends Component {
                 console.log("Rx NOT inserted"); 
             }
         })
-    };
+    }
 
     render() {
         if (this.state.redirect === true) {
@@ -148,16 +168,10 @@ class AddRx extends Component {
                                     name="rx_num"
                                     onChange={this.handleInputChange}
                                 />
-                                <label htmlFor="rx_num" className="addRxFormLabel">Drug Name</label>
+                                <label htmlFor="drugName" className="addRxFormLabel">Drug Name</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id='drugName'
                                     value={this.state.drugName}
                                     name="drugName"
-                                    onChange={this.handleInputChange}
-                                />
-                                <label htmlFor="ndc" className="addRxFormLabel">NDC - <i>Optional</i></label>
-                                <input type="text" className="form-control formFieldsStyleAddRx" id="ndc"
-                                    value={this.state.ndc}
-                                    name="ndc"
                                     onChange={this.handleInputChange}
                                 />
                                 <label htmlFor="refills" className="addRxFormLabel">Refills</label>
@@ -174,8 +188,8 @@ class AddRx extends Component {
                                 />
                                 <label htmlFor="dosage" className="addRxFormLabel">How Many</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="dosage"
-                                    value={this.state.doseInterval}
-                                    name="doseInterval"
+                                    value={this.state.dosage}
+                                    name="dosage"
                                     onChange={this.handleInputChange}
                                 />
                                 <label htmlFor="doseInterval" className="addRxFormLabel">How Often</label>
@@ -196,6 +210,7 @@ class AddRx extends Component {
                                     name="timeOfDay"
                                     onChange={this.handleInputChange}
                                 >
+                                    <option value=""></option>
                                     <option value="Morning">Morning</option>
                                     <option value="Noon">Noon</option>
                                     <option value="Evening">Evening</option>
