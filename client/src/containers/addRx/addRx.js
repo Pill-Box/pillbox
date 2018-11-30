@@ -60,6 +60,9 @@ class AddRx extends Component {
                         error: false,
                     });
 
+                    console.log(response)
+                    console.log(this.state.userId)
+                    
                     this.loadPatient();
                 })
                 .catch(error => {
