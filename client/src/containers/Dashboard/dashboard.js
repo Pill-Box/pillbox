@@ -8,6 +8,7 @@ import './dashboard.css'
 import DeleteBtn from '../../components/Buttons/deleteBtn'
 import RxModalBtn from '../../components/Buttons/ModalBtn'
 import RxModal from '../../components/RxModal/rxModal'
+import Moment from 'react-moment'
 
 class Dashboard extends React.Component {
 
@@ -17,7 +18,8 @@ class Dashboard extends React.Component {
         userId: "",
         show: false,
         patientId: '',
-        isLoggedIn: ''
+        isLoggedIn: '', 
+
     }
 
     async componentDidMount() {
@@ -101,6 +103,7 @@ class Dashboard extends React.Component {
             <div className="dashboard-body gradient-background">
                 <Title />
                 <div className="container">
+                <h1 id='clock'>Prescriptions for   <Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
                     <div className='row dashboard'>
 
                         {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
