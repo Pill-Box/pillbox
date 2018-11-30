@@ -9,9 +9,13 @@ import DeleteBtn from '../../components/Buttons/deleteBtn'
 import RxModalBtn from '../../components/Buttons/ModalBtn'
 import RxModal from '../../components/RxModal/rxModal'
 import Moment from 'react-moment'
-import { Redirect } from 'react-router'
 
 class Dashboard extends React.Component {
+
+    static defaultProps = {
+        patients: [],
+        drugNames: []
+    }
 
     state = {
         patients: [],
@@ -24,7 +28,7 @@ class Dashboard extends React.Component {
 
     async componentDidMount() {
         let accessString = localStorage.getItem('JWT');
-        console.log(accessString);
+        // console.log(accessString);
         if (accessString == null) {
             this.setState({
                 error: true,

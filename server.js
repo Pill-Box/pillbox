@@ -11,21 +11,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+
+  app.get('*', (request, response) => {
+    response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+
 };
-
-app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
-// app.use(flash());
-
-/////Passport Middleware via documentation
-// app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));	
-// app.use(passport.initialize());
-// app.use(passport.session());	// persistent login sessions
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -33,7 +28,6 @@ var db = require("./models");
 //	Import Passport Strategies & Config
 require('./config/jwtConfig');
 require('./config/passport');
-
 
 app.use(passport.initialize())
 
@@ -50,5 +44,5 @@ db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
       console.log(`App listening on PORT ${PORT}`);
     });
-  });
+});
   

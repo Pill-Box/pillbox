@@ -7,9 +7,10 @@ import Title from '../../components/Title/title'
 
 
 class AddRx extends Component {
-    constructor(props) {
-        super();
-        this.getDailyMedLink = this.getDailyMedLink.bind(this)
+
+    static defaultProps = {
+        patientData: [],
+        drugNames: []
     }
     
     state = {
@@ -71,10 +72,12 @@ class AddRx extends Component {
         axios.get('/api/user/patients/' + this.state.userId)
             .then(patientData => {
                 // console.log(patientData.data.Patients);
-                this.setState({
-                    patients: patientData.data.Patients,
-                    patientId: patientData.data.Patients[0].id
-                })
+                if(!patientData) {
+                    this.setState({
+                        patients: patientData.data.Patients,
+                        patientId: patientData.data.Patients[0].id
+                    })
+                }
             })
             .catch(err => console.log(`Error: ${err}`)
             );
