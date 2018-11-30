@@ -15,7 +15,7 @@ class AddRx extends Component {
     state = {
         rx_num: "",
         drugName: "",
-        ndc: "https://dailymed.nlm.nih.gov/dailymed/",
+        ndc: "",
         refills: "",
         quantityDispensed: "",
         sig: "",
@@ -84,9 +84,9 @@ class AddRx extends Component {
         let drugName = this.state.drugName
         let drugNameUpper = drugName.toUpperCase()
         axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
-        .then(function(response) {
-            console.log(response.data[0].setid)
-            if (response !== null) {
+        .then(response => {
+            if (response) {
+                // console.log(response.data[0].setid)
                 this.setState({ ndc: response.data[0].setid })
             } else {
                 this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
@@ -105,7 +105,7 @@ class AddRx extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
-        // this.getDailyMedLink()
+        this.getDailyMedLink()
 
         axios.post('/api/Rxs', {
             rx_num: this.state.rx_num,
@@ -125,10 +125,10 @@ class AddRx extends Component {
             PatientId: this.state.patientId
         }).then(response => {
             if (response !== null) {
-                console.log("Rx inserted");
+                // console.log("Rx inserted");
                 this.setState({ redirect: true })
             } else {
-                console.log("Rx NOT inserted"); 
+                // console.log("Rx NOT inserted"); 
             }
         })
     }
