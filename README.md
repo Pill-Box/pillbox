@@ -9,7 +9,7 @@ Managing multiple medications can be tricky, and if done incorrectly, even dange
 ## Developers' Toolkit
 PillBox was created with React.js.  Additional tehnologies include:
 1. Backend: MySQL, Sequelize, Axios, Express
-2. Frontend: Bootstrap, [React Bootstrap](https://react-bootstrap.github.io/), [React Moment](https://www.npmjs.com/package/react-moment),[Passport.js](http://www.passportjs.org/), Passport Web Token, Passport Local, CSS
+2. Frontend: Bootstrap, [React Bootstrap](https://react-bootstrap.github.io/), [React Moment](https://www.npmjs.com/package/react-moment), [Passport.js](http://www.passportjs.org/), Passport Web Token, Passport Local, CSS
 
 ![screenshot](client/public/screenshot-modal.png)
 
