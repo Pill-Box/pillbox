@@ -12,11 +12,6 @@ import Moment from 'react-moment'
 
 class Dashboard extends React.Component {
 
-    static defaultProps = {
-        patients: [],
-        drugNames: []
-    }
-
     state = {
         patients: [],
         drugNames: [],
@@ -51,6 +46,8 @@ class Dashboard extends React.Component {
                         isLoggedIn: true
                     });
 
+                    console.log(this.state.userId)
+
                     this.loadUser();
                 })
                 .catch(error => {
@@ -62,7 +59,7 @@ class Dashboard extends React.Component {
     loadUser = () => {
         axios.get('/api/user/patient/rx/' + this.state.userId)
             .then(patientData => {
-                // console.log(patientData.data.Patients);
+                console.log(patientData.data.Patients);
                 this.setState({
                     patients: patientData.data.Patients
                 })
