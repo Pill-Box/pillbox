@@ -59,13 +59,15 @@ class AddRx extends Component {
                         isLoggedIn: true,
                         error: false,
                     });
+
+                    this.loadPatient();
                 })
                 .catch(error => {
                     console.log(error.data);
                 });
         }
 
-        this.loadPatient();
+        
     }
 
     loadPatient = () => {

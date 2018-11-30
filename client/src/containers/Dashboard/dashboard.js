@@ -62,7 +62,7 @@ class Dashboard extends React.Component {
     loadUser = () => {
         axios.get('/api/user/patient/rx/' + this.state.userId)
             .then(patientData => {
-                console.log(patientData.data.Patients);
+                // console.log(patientData.data.Patients);
                 this.setState({
                     patients: patientData.data.Patients
                 })
@@ -91,7 +91,7 @@ class Dashboard extends React.Component {
     }
 
     handleRxModal = id => {
-        console.log(id)
+        // console.log(id)
         this.setState({ show: true, patientId: id })
 
     }
@@ -111,7 +111,7 @@ class Dashboard extends React.Component {
                 <div className="container">
                     <h1 id='clock'>Prescriptions for   <Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
                     <div className='row dashboard'>
-
+                        {console.log(this.state.patients)}
                         {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
                             <RxModal
                                 show={this.state.show}
