@@ -23,12 +23,6 @@ if (process.env.NODE_ENV === "production") {
   });
 
   app.enable('trust proxy');
-  app.use(session({
-    resave: true,
-    saveUninitialized: true,
-    proxy: true
-  }));
-
 };
 
 // Requiring our models for syncing
@@ -39,6 +33,7 @@ require('./config/jwtConfig');
 require('./config/passport');
 
 app.use(passport.initialize())
+app.use(passport.session())
 
 // Add routes, both API and view
 require('./routes/Rx')(app);
