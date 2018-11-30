@@ -3,13 +3,16 @@ import axios from 'axios'
 import './login.css'
 import FieldGroup from '../../components/Fieldgroup'
 import Title from '../../components/Title/title'
+import { Message } from '../../components/Message/message'
 import { Redirect } from 'react-router-dom'
 
 class Login extends React.Component {
     state = {
         username: '',
         password: '',
-        redirect: false
+        redirect: false,
+        error: false,
+        errorMessage: ''
     }
 
     componentDidMount() {
@@ -40,20 +43,18 @@ class Login extends React.Component {
                         password: this.state.password
                     }
                 ).then(response => {
-                    if (response.data === 'Bad User Name' || response.data === 'passwords do not match') {
-                        console.log(response.data);
+                    if (response.data === 'Login failed') {
+                        console.log(response);
                         this.setState({
-                            showError: true,
-                            showNullError: false,
-                            redirect: false
+                            redirect: false,
+                            error: true,
+                            errorMessage: response.data 
                         });
                     } else {
                         console.log('successful login');
                         localStorage.setItem('JWT', response.data.token);
                         this.setState({
                             loggedIn: true,
-                            showError: false,
-                            showENullrror: false,
                             redirect: true
                         });
                     }
@@ -93,7 +94,8 @@ class Login extends React.Component {
                                         />
                                         <FieldGroup
                                             name='password'
-                                            id='nameArea'
+                                            type='password'
+                                            id='password'
                                             value={this.state.password}
                                             onChange={this.handleInput}
                                             placeholder='password'
@@ -104,6 +106,9 @@ class Login extends React.Component {
                             <input id='submit' type='submit' value='SUBMIT' onClick={this.handleSubmit} />
                             <span><a href='/signup'>Sign Up</a> | </span> 
                             <a target="_blank" rel="noopener noreferrer" href='https://github.com/Pill-Box'><span className="infoText">GitHub <i className="fab fa-github"></i></span></a>
+                            <br />
+                            {this.state.error ? <Message key='1'> {this.state.errorMessage} </Message> : null}
+                            {/* <p>Forgot your password?{'    '}<a href='/reset'>Reset it!</a></p> */}
                         </div>
                     </div>
                 </div>

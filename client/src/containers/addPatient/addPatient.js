@@ -13,7 +13,8 @@ class AddPatient extends React.Component {
         firstName: "",
         lastName: "",
         userId: "",
-        redirect: false
+        redirect: false,
+        isLoggedIn: ''
     };
 
     async componentDidMount() {
@@ -22,7 +23,7 @@ class AddPatient extends React.Component {
         console.log(accessString);
         if (accessString == null) {
             this.setState({
-                isLoading: false,
+                isLoggedIn: false,
                 error: true,
             });
         } else {
@@ -36,7 +37,7 @@ class AddPatient extends React.Component {
                 .then(response => {
                     this.setState({
                         userId: response.data.id,
-                        isLoading: false,
+                        isLoggedIn: true,
                         error: false,
                     });
                 })
@@ -74,6 +75,10 @@ class AddPatient extends React.Component {
     render() {
         if (this.state.redirect === true) {
             return <Redirect to='/dashboard' />
+        }
+
+        if (this.state.isLoggedIn === false) {
+            window.location.href = '/login'
         }
 
         return (

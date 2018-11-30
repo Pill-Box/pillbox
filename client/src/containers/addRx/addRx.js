@@ -7,7 +7,11 @@ import Title from '../../components/Title/title'
 
 
 class AddRx extends Component {
-
+    constructor(props) {
+        super();
+        this.getDailyMedLink = this.getDailyMedLink.bind(this)
+    }
+    
     state = {
         rx_num: "",
         drugName: "",
@@ -28,15 +32,16 @@ class AddRx extends Component {
         Name_Last: "",
         patients: [],
         userId: "",
-        redirect: false
+        redirect: false,
+        isLoggedIn: ''
     };
 
     async componentDidMount() {
         let accessString = localStorage.getItem('JWT');
-        console.log(accessString);
+        // console.log(accessString);
         if (accessString == null) {
             this.setState({
-                isLoading: false,
+                isLoggedIn: false,
                 error: true,
             });
         } else {
@@ -50,7 +55,7 @@ class AddRx extends Component {
                 .then(response => {
                     this.setState({
                         userId: response.data.id,
-                        isLoading: false,
+                        isLoggedIn: true,
                         error: false,
                     });
                 })
@@ -65,7 +70,7 @@ class AddRx extends Component {
     loadPatient = () => {
         axios.get('/api/user/patients/' + this.state.userId)
             .then(patientData => {
-                console.log(patientData.data.Patients);
+                // console.log(patientData.data.Patients);
                 this.setState({
                     patients: patientData.data.Patients,
                     patientId: patientData.data.Patients[0].id
@@ -73,6 +78,20 @@ class AddRx extends Component {
             })
             .catch(err => console.log(`Error: ${err}`)
             );
+    }
+
+    getDailyMedLink = () => {
+        let drugName = this.state.drugName
+        let drugNameUpper = drugName.toUpperCase()
+        axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
+        .then(response => {
+            if (response) {
+                // console.log(response.data[0].setid)
+                this.setState({ ndc: response.data[0].setid })
+            } else {
+                this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
+            }
+        });
     }
 
     handleInputChange = event => {
@@ -85,40 +104,59 @@ class AddRx extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state.patientId);
-        axios.post('/api/Rxs', {
-            rx_num: this.state.rx_num,
-            drug_name: this.state.drugName,
-            ndc: this.state.ndc,
-            refills: this.state.refills,
-            dispensed_qty: this.state.quantityDispensed,
-            sig: this.state.sig,
-            frequency: this.state.dosage,
-            perDay: this.state.doseInterval,
-            time_of_day: this.state.timeOfDay,
-            pharmacist: this.state.pharmacist,
-            pharmacy_number: this.state.pharmacyContact,
-            prescriber: this.state.prescriber,
-            prescriber_number: this.state.prescriberContact,
-            patient: this.state.patient,
-            PatientId: this.state.patientId
-        }).then(response => {
-            if (response !== null) {
-                console.log("Rx inserted");
-                this.setState({ redirect: true })
+
+        let drugName = this.state.drugName
+        let drugNameUpper = drugName.toUpperCase()
+        
+        axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
+        .then(response => {
+            if (response) {
+                // console.log(response.data[0].setid)
+                this.setState({ ndc: response.data[0].setid })
             } else {
-                console.log("Rx NOT inserted"); 
+                this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
             }
-        })
-    };
+
+            axios.post('/api/Rxs', {
+                rx_num: this.state.rx_num,
+                drug_name: this.state.drugName,
+                ndc: this.state.ndc,
+                refills: this.state.refills,
+                dispensed_qty: this.state.quantityDispensed,
+                sig: this.state.sig,
+                frequency: this.state.dosage,
+                perDay: this.state.doseInterval,
+                time_of_day: this.state.timeOfDay,
+                pharmacist: this.state.pharmacist,
+                pharmacy_number: this.state.pharmacyContact,
+                prescriber: this.state.prescriber,
+                prescriber_number: this.state.prescriberContact,
+                patient: this.state.patient,
+                PatientId: this.state.patientId
+            }).then(response => {
+                if (response !== null) {
+                    // console.log("Rx inserted");
+                    this.setState({ redirect: true })
+                } else {
+                    // console.log("Rx NOT inserted"); 
+                }
+            })
+        });
+
+        
+    }
 
     render() {
         if (this.state.redirect === true) {
             return <Redirect to='/dashboard' />
         }
 
+        if (this.state.isLoggedIn === false) {
+            window.location.href = '/login'
+        }
+
         let optionItems = this.state.patients.map(patient => 
-            <option key={patient.id} value={patient.id}>{patient.name_first}</option>
+            <option key={patient.id} value={patient.id}>{patient.name_first} {patient.name_last}</option>
         );
         
         return (
@@ -143,16 +181,10 @@ class AddRx extends Component {
                                     name="rx_num"
                                     onChange={this.handleInputChange}
                                 />
-                                <label htmlFor="rx_num" className="addRxFormLabel">Drug Name</label>
+                                <label htmlFor="drugName" className="addRxFormLabel">Drug Name</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id='drugName'
                                     value={this.state.drugName}
                                     name="drugName"
-                                    onChange={this.handleInputChange}
-                                />
-                                <label htmlFor="ndc" className="addRxFormLabel">NDC - <i>Optional</i></label>
-                                <input type="text" className="form-control formFieldsStyleAddRx" id="ndc"
-                                    value={this.state.ndc}
-                                    name="ndc"
                                     onChange={this.handleInputChange}
                                 />
                                 <label htmlFor="refills" className="addRxFormLabel">Refills</label>
@@ -169,8 +201,8 @@ class AddRx extends Component {
                                 />
                                 <label htmlFor="dosage" className="addRxFormLabel">How Many</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="dosage"
-                                    value={this.state.doseInterval}
-                                    name="doseInterval"
+                                    value={this.state.dosage}
+                                    name="dosage"
                                     onChange={this.handleInputChange}
                                 />
                                 <label htmlFor="doseInterval" className="addRxFormLabel">How Often</label>
@@ -191,6 +223,7 @@ class AddRx extends Component {
                                     name="timeOfDay"
                                     onChange={this.handleInputChange}
                                 >
+                                    <option value=""></option>
                                     <option value="Morning">Morning</option>
                                     <option value="Noon">Noon</option>
                                     <option value="Evening">Evening</option>

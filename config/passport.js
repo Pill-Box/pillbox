@@ -66,12 +66,12 @@ passport.use(
           }).then(user => {
             // console.log('user on passport.js ' + util.inspect(user.dataValues));
             if(user === null) {
-              return done(null, false, {message: 'Bad User Name'});
+              return done(null, false, {message: 'Login failed'});
             } else {
               bcrypt.compare(password, user.hashed_password).then(response => {
                 if (response !== true) {
-                  console.log('passwords do not match');
-                  return done(null, false, {message: 'passwords do not match'});
+                  // console.log('passwords do not match');
+                  return done(null, false, {message: 'Login failed'});
                 }
                 console.log('user found & authenticated');
                 // console.log('user on passport.js ' + util.inspect(user.dataValues));
@@ -114,16 +114,5 @@ passport.use(
     }
   }),
 );
-
-// passport.use(new LocalStrategy(
-//     function(username, password, done) {
-//       User.findOne({ username: username }, function (err, user) {
-//         if (err) { return done(err); }
-//         if (!user) { return done(null, false); }
-//         if (!user.verifyPassword(password)) { return done(null, false); }
-//         return done(null, user);
-//       });
-//     }
-//   ));
 
   

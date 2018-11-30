@@ -8,6 +8,8 @@ import './dashboard.css'
 import DeleteBtn from '../../components/Buttons/deleteBtn'
 import RxModalBtn from '../../components/Buttons/ModalBtn'
 import RxModal from '../../components/RxModal/rxModal'
+import Moment from 'react-moment'
+import { Redirect } from 'react-router'
 
 class Dashboard extends React.Component {
 
@@ -18,15 +20,15 @@ class Dashboard extends React.Component {
         show: false,
         patientId: '',
         isLoggedIn: ''
-    }
+       }
 
     async componentDidMount() {
         let accessString = localStorage.getItem('JWT');
         console.log(accessString);
         if (accessString == null) {
             this.setState({
-                isLoading: false,
                 error: true,
+                isLoggedIn: false
             });
         } else {
             await axios
@@ -34,13 +36,15 @@ class Dashboard extends React.Component {
                     params: {
                         username: this.props.match.params.username,
                     },
-                    headers: { Authorization: `JWT ${accessString}` },
+                    headers: {
+                        Authorization: `JWT ${accessString}`
+                    }
                 })
                 .then(response => {
                     this.setState({
                         userId: response.data.id,
-                        isLoading: false,
                         error: false,
+                        isLoggedIn: true
                     });
                 })
                 .catch(error => {
@@ -90,12 +94,18 @@ class Dashboard extends React.Component {
 
     handleHideModal = () => this.setState({ show: false })
 
+    getDrugInfo = id => window.open("https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=" + id)
+
     render() {
+        if (this.state.isLoggedIn === false) {
+            window.location.href = '/login'
+        }
 
         return (
             <div className="dashboard-body gradient-background">
                 <Title />
                 <div className="container">
+                    <h1 id='clock'>Prescriptions for   <Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
                     <div className='row dashboard'>
 
                         {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
@@ -120,6 +130,8 @@ class Dashboard extends React.Component {
                                         Pharmacist: {drug.pharmacist}<br />
                                         Pharmacy Number: {drug.pharmacy_number}<br />
                                         Notes: {drug.notes}<br />
+                                     
+                                        <button onClick={() => this.getDrugInfo(drug.ndc)}>Get Drug Info</button>
                                     </Rx>
                                 ))}
                             </RxModal>
@@ -140,10 +152,8 @@ class Dashboard extends React.Component {
                                         </Rx>
                                     ))}
                                 </PatientCard>
-
                             ))}
                             <a href='/addpatient'><button className="standard-btn">ADD NEW PATIENT</button></a>
-
                         </div>
                     </div>
                 </div>

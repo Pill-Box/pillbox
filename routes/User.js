@@ -19,7 +19,7 @@ module.exports = app => {
 
     app.get('/signout', function(req, res){
         req.logout();
-        sessionStorage.clear();
-        res.redirect('/');
+        localStorage.removeItem(JWT);
+        res.redirect('/login');
     });
 }
