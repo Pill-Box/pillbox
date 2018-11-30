@@ -50,19 +50,19 @@ class Dashboard extends React.Component {
                         error: false,
                         isLoggedIn: true
                     });
+
+                    this.loadUser();
                 })
                 .catch(error => {
                     console.log(error.data);
                 });
         }
-
-        this.loadUser();
     }
 
     loadUser = () => {
         axios.get('/api/user/patient/rx/' + this.state.userId)
             .then(patientData => {
-                // console.log(patientData.data.Patients);
+                console.log(patientData.data.Patients);
                 this.setState({
                     patients: patientData.data.Patients
                 })
