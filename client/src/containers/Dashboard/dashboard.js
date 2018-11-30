@@ -9,6 +9,7 @@ import DeleteBtn from '../../components/Buttons/deleteBtn'
 import RxModalBtn from '../../components/Buttons/ModalBtn'
 import RxModal from '../../components/RxModal/rxModal'
 import Moment from 'react-moment'
+import { Redirect } from 'react-router'
 
 class Dashboard extends React.Component {
 
@@ -18,9 +19,8 @@ class Dashboard extends React.Component {
         userId: "",
         show: false,
         patientId: '',
-        isLoggedIn: '', 
-
-    }
+        isLoggedIn: ''
+       }
 
     async componentDidMount() {
         let accessString = localStorage.getItem('JWT');
@@ -36,8 +36,8 @@ class Dashboard extends React.Component {
                     params: {
                         username: this.props.match.params.username,
                     },
-                    headers: { 
-                        Authorization: `JWT ${accessString}` 
+                    headers: {
+                        Authorization: `JWT ${accessString}`
                     }
                 })
                 .then(response => {
@@ -50,7 +50,7 @@ class Dashboard extends React.Component {
                 .catch(error => {
                     console.log(error.data);
                 });
-        } 
+        }
 
         this.loadUser();
     }
@@ -94,6 +94,8 @@ class Dashboard extends React.Component {
 
     handleHideModal = () => this.setState({ show: false })
 
+    getDrugInfo = id => window.open("https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=" + id)
+
     render() {
         if (this.state.isLoggedIn === false) {
             window.location.href = '/login'
@@ -103,7 +105,7 @@ class Dashboard extends React.Component {
             <div className="dashboard-body gradient-background">
                 <Title />
                 <div className="container">
-                <h1 id='clock'>Prescriptions for   <Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
+                    <h1 id='clock'>Prescriptions for   <Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
                     <div className='row dashboard'>
 
                         {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
@@ -128,6 +130,8 @@ class Dashboard extends React.Component {
                                         Pharmacist: {drug.pharmacist}<br />
                                         Pharmacy Number: {drug.pharmacy_number}<br />
                                         Notes: {drug.notes}<br />
+                                     
+                                        <button onClick={() => this.getDrugInfo(drug.ndc)}>Get Drug Info</button>
                                     </Rx>
                                 ))}
                             </RxModal>
