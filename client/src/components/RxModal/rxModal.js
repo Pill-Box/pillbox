@@ -10,7 +10,7 @@ const RxModal = ({ handleClose, show, children }) => {
       <section className="modal-main">
         {children}
         <hr />
-        <button id='modal' onClick={handleClose}>close</button>
+        <button className="standard-btn" id='modal' onClick={handleClose}>CLOSE</button>
       </section>
     </div>
    

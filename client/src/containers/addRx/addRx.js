@@ -234,7 +234,7 @@ class AddRx extends Component {
                                     name="notes"
                                     onChange={this.handleInputChange}
                                 />
-                                <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary getRxData">Submit</button>
+                                <button onClick={this.handleFormSubmit} type="submit" className="btn btn-primary getRxData">SUBMIT</button>
                             </div>
                         </div>
                     </div>

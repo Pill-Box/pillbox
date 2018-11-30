@@ -94,8 +94,10 @@ class AddPatient extends React.Component {
 
                     <div className='row'>
                         <div className='col-md-12'>
-                            <h3>Add a new person!</h3>
-                            <div className="form-group formStyle borderOrange">
+                        <div className="bbstyle">
+                            <h3 className="login-h3">ADD A NEW PERSON</h3>
+                            <br/>
+                            <div className="form-group">
                                 <input type="text" className="form-control formFieldsStyle"
                                     value={this.state.firstName}
                                     onChange={this.handleInputChange}
@@ -109,9 +111,10 @@ class AddPatient extends React.Component {
                                     placeholder="Last Name"
                                 />
                             </div>
-                            <button onClick={this.handleFormSubmit} className="btn btn-primary gePatientData">Submit</button>
+                            <button onClick={this.handleFormSubmit} className="btn standard-btn gePatientData">SUBMIT</button>
                         </div >
                     </div >
+                    </div>
                     <TabScreens />
                 </div>
             </div>
