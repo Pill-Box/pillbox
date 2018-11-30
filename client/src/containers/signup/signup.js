@@ -215,7 +215,7 @@ class SignUp extends React.Component {
                                 </form>
                             </div>
                                 <input id='submit' type='submit' value='SUBMIT' onClick={this.registerUser} />
-                                <a href="login">Already signed up? Go to the Login screen.</a>
+                                <a href="login">Already signed up? Log in!</a>
                                 {this.state.error ? <Message key='1'> {this.state.errorMessage} </Message> : null}
                         </div>
                     </div>

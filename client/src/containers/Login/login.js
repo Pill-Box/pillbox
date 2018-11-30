@@ -103,8 +103,9 @@ class Login extends React.Component {
                                     </form>
                                 </div>
                             </div>
-                            <br />
                             <input id='submit' type='submit' value='SUBMIT' onClick={this.handleSubmit} />
+                            <span><a href='/signup'>Sign Up</a> | </span> 
+                            <a target="_blank" rel="noopener noreferrer" href='https://github.com/Pill-Box'><span className="infoText">GitHub <i className="fab fa-github"></i></span></a>
                             <br />
                             {this.state.error ? <Message key='1'> {this.state.errorMessage} </Message> : null}
                             {/* <p>Forgot your password?{'    '}<a href='/reset'>Reset it!</a></p> */}

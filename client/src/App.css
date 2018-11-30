@@ -23,17 +23,25 @@
     font-size: 45px;
 } */
 
+a {
+    color:rgb(0, 98, 122);
+}
+
+a:hover {
+    color:rgb(0, 68, 85);
+}
+
 
 /* SUBMIT BUTTON */
 .submit, #submit {
-    background-color: rgb(0, 56, 121);
+    background-color: rgb(0, 73, 97);
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     color: white;
     border: none;
     border-radius: 3px;
     padding: 10px;
-    box-shadow: 0px 2px 21px -2px rgba(0,0,0,.75);
+    box-shadow: 3px 3px 20px -3px rgba(0, 0, 0, 0.568);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 40px;
@@ -41,8 +49,8 @@
     width: 100%;
 }
   
-.submit, #submit:hover {
-    opacity: .7;
+.submit, #submit:hover, .standard-btn:hover, .getRxData:hover {
+    opacity: .9;
     cursor: pointer;
 }
 
@@ -50,18 +58,22 @@
     margin-top: 25px;
     width: 100%;
     height: 45px;
-    background: rgb(62, 220, 255);
+    background-color: rgb(0, 55, 71);
+    color: White;
     border: 0px;
     font-size: 20px;
     border-radius: 5px;
-    box-shadow: 3px 3px 20px -3px rgba(0, 0, 0, 0.466);
+    box-shadow: 3px 3px 20px -3px rgba(0, 0, 0, 0.568);
     font-weight: 600;
 }
 
-.standard-btn:hover, .getRxData:hover {
-    background: rgb(28, 213, 255);
-}
 
+
+.login-h3 {
+    color:black;
+    margin-top: 30px;
+    text-align: center;
+}
 
 
 .bbstyle {
@@ -88,7 +100,6 @@
 
 h1, h3 {
     font-weight: bold;
-    margin: 0;
 }
 
 h1 {
@@ -119,6 +130,17 @@ and (max-device-width : 667px)
 and (orientation : portrait) { 
     input {
         width: 150px;
+    }
+
+    .gradient-background {
+        padding: 15px;
+    }
+
+    .bbstyle {
+        padding: 15px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
     }
 
     img {

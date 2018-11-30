@@ -7,12 +7,12 @@
     text-align: center;
     border-top: 1px solid black;
     margin-top: 0;
+    background-color: #ffffff;
 }
 
 .bar-cols {
-    float: left;
     width: 20%;
-    background-color: white;
+    background-color: #ffffff;
     padding-top: 10px;
     padding-bottom: 10px;
 }
