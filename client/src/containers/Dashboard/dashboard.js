@@ -131,7 +131,7 @@ class Dashboard extends React.Component {
                                         Pharmacy Number: {drug.pharmacy_number}<br />
                                         Notes: {drug.notes}<br />
                                      
-                                        <button onClick={() => this.getDrugInfo(drug.ndc)}>Get Drug Info</button>
+                                        <button className="get-drug-info" onClick={() => this.getDrugInfo(drug.ndc)}><i className="fas fa-notes-medical"></i>  Get Drug Info</button>
                                     </Rx>
                                 ))}
                             </RxModal>
