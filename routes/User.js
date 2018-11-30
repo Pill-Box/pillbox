@@ -19,6 +19,7 @@ module.exports = app => {
 
     app.get('/signout', function(req, res){
         req.logout();
+        console.log("removing JWT");
         localStorage.removeItem(JWT);
         res.redirect('/login');
     });
