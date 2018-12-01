@@ -67,6 +67,7 @@ class AddRx extends Component {
                 .catch(error => {
                     console.log(error.data);
                 });
+
         }
 
         
@@ -92,11 +93,11 @@ class AddRx extends Component {
         let drugNameUpper = drugName.toUpperCase()
         axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
         .then(response => {
-            if (response) {
+            if (!response.data.isArray(response.data) || !response.data.length) {
                 // console.log(response.data[0].setid)
                 this.setState({ ndc: response.data[0].setid })
             } else {
-                this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
+                // this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
             }
         });
     }
@@ -112,45 +113,32 @@ class AddRx extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
-        let drugName = this.state.drugName
-        let drugNameUpper = drugName.toUpperCase()
-        
-        axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
-        .then(response => {
-            if (response) {
-                // console.log(response.data[0].setid)
-                this.setState({ ndc: response.data[0].setid })
+        this.getDailyMedLink()
+
+        axios.post('/api/Rxs', {
+            rx_num: this.state.rx_num,
+            drug_name: this.state.drugName,
+            ndc: this.state.ndc,
+            refills: this.state.refills,
+            dispensed_qty: this.state.quantityDispensed,
+            sig: this.state.sig,
+            frequency: this.state.dosage,
+            perDay: this.state.doseInterval,
+            time_of_day: this.state.timeOfDay,
+            pharmacist: this.state.pharmacist,
+            pharmacy_number: this.state.pharmacyContact,
+            prescriber: this.state.prescriber,
+            prescriber_number: this.state.prescriberContact,
+            patient: this.state.patient,
+            PatientId: this.state.patientId
+        }).then(response => {
+            if (response !== null) {
+                // console.log("Rx inserted");
+                this.setState({ redirect: true })
             } else {
-                this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
+                // console.log("Rx NOT inserted"); 
             }
-
-            axios.post('/api/Rxs', {
-                rx_num: this.state.rx_num,
-                drug_name: this.state.drugName,
-                ndc: this.state.ndc,
-                refills: this.state.refills,
-                dispensed_qty: this.state.quantityDispensed,
-                sig: this.state.sig,
-                frequency: this.state.dosage,
-                perDay: this.state.doseInterval,
-                time_of_day: this.state.timeOfDay,
-                pharmacist: this.state.pharmacist,
-                pharmacy_number: this.state.pharmacyContact,
-                prescriber: this.state.prescriber,
-                prescriber_number: this.state.prescriberContact,
-                patient: this.state.patient,
-                PatientId: this.state.patientId
-            }).then(response => {
-                if (response !== null) {
-                    // console.log("Rx inserted");
-                    this.setState({ redirect: true })
-                } else {
-                    // console.log("Rx NOT inserted"); 
-                }
-            })
-        });
-
-        
+        })
     }
 
     render() {

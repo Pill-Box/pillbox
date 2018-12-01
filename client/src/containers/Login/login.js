@@ -16,7 +16,7 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        console.log("removing JWT");
+        // console.log("removing JWT");
         localStorage.removeItem('JWT')
     }
 
