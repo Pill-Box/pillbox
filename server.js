@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
     response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 
-  app.enable('trust proxy');
+  // app.enable('trust proxy');
 };
 
 // Requiring our models for syncing

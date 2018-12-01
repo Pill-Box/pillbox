@@ -49,7 +49,6 @@ class Dashboard extends React.Component {
 
                     console.log(JSON.stringify(response.data))
                     console.log(this.state.userId)
-
                     this.loadUser();
                 })
                 .catch(error => {
