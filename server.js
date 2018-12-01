@@ -25,6 +25,8 @@ if (process.env.NODE_ENV === "production") {
   app.enable('trust proxy');
 };
 
+
+
 // Requiring our models for syncing
 var db = require("./models");
 

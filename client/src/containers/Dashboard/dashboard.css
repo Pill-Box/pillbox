@@ -18,17 +18,7 @@
      color: white;
  }
 
- .get-drug-info {
-    margin-top: 25px;
-    width: 35%;
-    height: 45px;
-    background-color: rgb(2, 76, 99);
-    color: White;
-    border: 0px;
-    font-size: 20px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 20px -3px rgba(0, 0, 0, 0.568);
-}
+
 
 .get-drug-info:hover {
     opacity: .9;

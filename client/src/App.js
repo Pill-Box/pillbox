@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Start from './containers/Start/start'
+// import Start from './containers/Start/start'
 import Login from './containers/Login/login'
 import Info from './containers/Info/info'
 import SignUp from './containers/signup/signup'
@@ -22,7 +22,7 @@ const App = () => (
         <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/addRx' component={AddRx} />
         <Route exact path='/addpatient' component={AddPatient} />
-         <Route exact path='/signout' component={Start} />
+        <Route exact path='/signout' component={Login} />
       </Switch>
     </div>
   </Router>

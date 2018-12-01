@@ -107,7 +107,7 @@ class Dashboard extends React.Component {
             <div className="dashboard-body gradient-background">
                 <Title />
                 <div className="container">
-                    <h1 id='clock'>Prescriptions for   <Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
+                    <h1 id='clock'>Prescriptions for   <Moment format='MM/DD/YYYY'>{this.props.dateToFormat}</Moment></h1>
                     <div className='row dashboard'>
                         {console.log(this.state.patients)}
                         {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
@@ -134,6 +134,8 @@ class Dashboard extends React.Component {
                                         Notes: {drug.notes}<br />
                                      
                                         <button className="get-drug-info" onClick={() => this.getDrugInfo(drug.ndc)}><i className="fas fa-notes-medical"></i>  Get Drug Info</button>
+                                        <br/> 
+                                        <hr/>
                                     </Rx>
                                 ))}
                             </RxModal>
@@ -149,8 +151,8 @@ class Dashboard extends React.Component {
                                     {patient.name_last}
                                     {patient.Rxes.map(drug => (
                                         <Rx key={drug.id}>
-                                            <strong><i className="fas fa-prescription-bottle-alt"></i>{'    '}</strong> {drug.drug_name} {' '}|{'  '}<strong><i className="far fa-clock"></i>{'  '}</strong> {drug.time_of_day}
-                                            <DeleteBtn onClick={() => this.deleteRx(drug.id)} />
+                                            <strong><i className="fas fa-prescription-bottle-alt"></i>{'    '}</strong> {drug.drug_name} {' '}|{'  '}<strong><i className="far fa-clock"></i>{'  '}</strong>  {drug.time_of_day}
+                                            <DeleteBtn onClick={() => this.deleteRx(drug.id)} /><br/><br/>
                                         </Rx>
                                     ))}
                                 </PatientCard>

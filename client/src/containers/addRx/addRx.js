@@ -77,7 +77,7 @@ class AddRx extends Component {
         axios.get('/api/user/patients/' + this.state.userId)
             .then(patientData => {
                 // console.log(patientData.data.Patients);
-                if(!patientData) {
+                if(patientData) {
                     this.setState({
                         patients: patientData.data.Patients,
                         patientId: patientData.data.Patients[0].id
@@ -93,12 +93,13 @@ class AddRx extends Component {
         let drugNameUpper = drugName.toUpperCase()
         axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
         .then(response => {
-            if (response) {
-                // console.log(response.data[0].setid)
+            if (!response.data.isArray(response.data) || !response.data.length) {
+                console.log(response.data[0].setid)
                 this.setState({ ndc: response.data[0].setid })
-            } else {
-                this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
             }
+            // } else {
+            //     this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
+            // }
         });
     }
 
@@ -113,17 +114,7 @@ class AddRx extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
-        let drugName = this.state.drugName
-        let drugNameUpper = drugName.toUpperCase()
-        
-        axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
-        .then(response => {
-            if (response) {
-                // console.log(response.data[0].setid)
-                this.setState({ ndc: response.data[0].setid })
-            } else {
-                this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
-            }
+            this.getDailyMedLink();
 
             axios.post('/api/Rxs', {
                 rx_num: this.state.rx_num,
@@ -149,9 +140,6 @@ class AddRx extends Component {
                     // console.log("Rx NOT inserted"); 
                 }
             })
-        });
-
-        
     }
 
     render() {

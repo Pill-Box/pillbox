@@ -7,10 +7,9 @@ const RxModal = ({ handleClose, show, children }) => {
   
   return ( 
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <section className="modal-main modal-guts">
         {children}
-        <hr />
-        <button className="standard-btn" id='modal' onClick={handleClose}>CLOSE</button>
+        <button className="standard-btn rxModal-close" id='modal' onClick={handleClose}>CLOSE</button>
       </section>
     </div>
    
