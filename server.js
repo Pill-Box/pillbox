@@ -12,18 +12,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/*', (req, res) => {
-  let url = path.join(__dirname, '../client/build', 'index.html');
-  if (!url.startsWith('/app/')) // we're on local windows
-    url = url.substring(1);
-  res.sendFile(url);
-});
-
+// app.get('/*', (req, res) => {
+//   let url = path.join(__dirname, '../client/build', 'index.html');
+//   if (!url.startsWith('/app/')) // we're on local windows
+//     url = url.substring(1);
+//   res.sendFile(url);
+// });
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-};
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// };
+
+//	Env Variable Import
+var env = require('dotenv').load();
 
 // Requiring our models for syncing
 var db = require("./models");
