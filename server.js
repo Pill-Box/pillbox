@@ -20,12 +20,9 @@ app.use(express.json());
 // });
 
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// };
-
-//	Env Variable Import
-var env = require('dotenv').load();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+};
 
 // Requiring our models for syncing
 var db = require("./models");
