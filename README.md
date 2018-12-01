@@ -17,6 +17,6 @@ PillBox was created with React.js.  Additional tehnologies include:
 [Alex Bowen](https://github.com/alex-bowen), [Julie Hodges](https://github.com/jivinjules), [James Peek](https://github.com/jpeek01)
 
 ## Visit pillBox on Heroku
-...coming
+[Pillbox on Heroku](https://pacific-hollows-45719.herokuapp.com/)
 
 ![screenshot-Rx](client/public/screenshot-Rx.png)
