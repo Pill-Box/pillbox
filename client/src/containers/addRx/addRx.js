@@ -155,7 +155,8 @@ class AddRx extends Component {
 
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to='/dashboard' />
+            // return <Redirect to='/dashboard' />
+            window.location.href = '/dashboard'
         }
 
         if (this.state.isLoggedIn === false) {
