@@ -107,7 +107,7 @@ class Dashboard extends React.Component {
             <div className="dashboard-body gradient-background">
                 <Title />
                 <div className="container">
-                    <h1 id='clock'>Prescriptions for   <Moment format='MM/DD/YYYY'>{this.props.dateToFormat}</Moment></h1>
+                    <h1 id='clock'><Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
                     <div className='row dashboard'>
                         {console.log(this.state.patients)}
                         {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
