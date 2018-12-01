@@ -20,7 +20,7 @@ class AddPatient extends React.Component {
     async componentDidMount() {
 
         let accessString = localStorage.getItem('JWT');
-        console.log(accessString);
+        // console.log(accessString);
         if (accessString == null) {
             this.setState({
                 isLoggedIn: false,
@@ -40,6 +40,8 @@ class AddPatient extends React.Component {
                         isLoggedIn: true,
                         error: false,
                     });
+                    console.log(response)
+                    console.log(this.state.userId)
                 })
                 .catch(error => {
                     console.log(error.data);

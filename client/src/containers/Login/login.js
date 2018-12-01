@@ -26,9 +26,9 @@ class Login extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const { username, password } = this.state
-        console.log(`Username ${username}`)
-        console.log(`Password is ${password}`)
+        // const { username, password } = this.state
+        // console.log(`Username ${username}`)
+        // console.log(`Password is ${password}`)
 
         if (this.state.username === '' || this.state.password === '') {
             this.setState({

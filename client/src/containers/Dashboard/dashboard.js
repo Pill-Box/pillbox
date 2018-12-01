@@ -9,7 +9,6 @@ import DeleteBtn from '../../components/Buttons/deleteBtn'
 import RxModalBtn from '../../components/Buttons/ModalBtn'
 import RxModal from '../../components/RxModal/rxModal'
 import Moment from 'react-moment'
-import { Redirect } from 'react-router'
 
 class Dashboard extends React.Component {
 
@@ -24,7 +23,7 @@ class Dashboard extends React.Component {
 
     async componentDidMount() {
         let accessString = localStorage.getItem('JWT');
-        console.log(accessString);
+        // console.log(accessString);
         if (accessString == null) {
             this.setState({
                 error: true,
@@ -46,19 +45,22 @@ class Dashboard extends React.Component {
                         error: false,
                         isLoggedIn: true
                     });
+
+                    console.log(response)
+                    console.log(this.state.userId)
+
+                    this.loadUser();
                 })
                 .catch(error => {
                     console.log(error.data);
                 });
         }
-
-        this.loadUser();
     }
 
     loadUser = () => {
         axios.get('/api/user/patient/rx/' + this.state.userId)
             .then(patientData => {
-                // console.log(patientData.data.Patients);
+                console.log(patientData.data.Patients);
                 this.setState({
                     patients: patientData.data.Patients
                 })
@@ -87,7 +89,7 @@ class Dashboard extends React.Component {
     }
 
     handleRxModal = id => {
-        console.log(id)
+        // console.log(id)
         this.setState({ show: true, patientId: id })
 
     }
@@ -107,7 +109,7 @@ class Dashboard extends React.Component {
                 <div className="container">
                     <h1 id='clock'>Prescriptions for   <Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
                     <div className='row dashboard'>
-
+                        {console.log(this.state.patients)}
                         {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
                             <RxModal
                                 show={this.state.show}
