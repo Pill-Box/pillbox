@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
                         isLoggedIn: true
                     });
 
-                    console.log(JSON.stringify(response.data))
+                    console.log(response.data)
                     console.log(this.state.userId)
                     this.loadUser();
                 })
