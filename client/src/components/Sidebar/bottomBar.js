@@ -4,6 +4,7 @@ import './bottomBar.css'
 class TabScreens extends React.Component {
 
     removeToken = () => {
+        console.log("removing JWT");
         localStorage.removeItem('JWT')
         let accessString = localStorage.getItem('JWT');
         console.log(accessString);

@@ -62,12 +62,12 @@ class AddRx extends Component {
 
                     console.log(response.data)
                     console.log(this.state.userId)
-
                     this.loadPatient();
                 })
                 .catch(error => {
                     console.log(error.data);
                 });
+
         }
 
         
@@ -76,8 +76,8 @@ class AddRx extends Component {
     loadPatient = () => {
         axios.get('/api/user/patients/' + this.state.userId)
             .then(patientData => {
-                // console.log(patientData.data.Patients);
-                if(patientData) {
+                console.log(patientData.data.Patients);
+                if(!patientData) {
                     this.setState({
                         patients: patientData.data.Patients,
                         patientId: patientData.data.Patients[0].id
@@ -94,8 +94,10 @@ class AddRx extends Component {
         axios.get(`https://datadiscovery.nlm.nih.gov/resource/jc2n-g5w8.json?medicine_name=${drugNameUpper}`)
         .then(response => {
             if (!response.data.isArray(response.data) || !response.data.length) {
-                console.log(response.data[0].setid)
+                // console.log(response.data[0].setid)
                 this.setState({ ndc: response.data[0].setid })
+            } else {
+                // this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
             }
             // } else {
             //     this.setState({ ndc: "https://dailymed.nlm.nih.gov/dailymed/" })
@@ -114,37 +116,38 @@ class AddRx extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
-            this.getDailyMedLink();
+        this.getDailyMedLink()
 
-            axios.post('/api/Rxs', {
-                rx_num: this.state.rx_num,
-                drug_name: this.state.drugName,
-                ndc: this.state.ndc,
-                refills: this.state.refills,
-                dispensed_qty: this.state.quantityDispensed,
-                sig: this.state.sig,
-                frequency: this.state.dosage,
-                perDay: this.state.doseInterval,
-                time_of_day: this.state.timeOfDay,
-                pharmacist: this.state.pharmacist,
-                pharmacy_number: this.state.pharmacyContact,
-                prescriber: this.state.prescriber,
-                prescriber_number: this.state.prescriberContact,
-                patient: this.state.patient,
-                PatientId: this.state.patientId
-            }).then(response => {
-                if (response !== null) {
-                    // console.log("Rx inserted");
-                    this.setState({ redirect: true })
-                } else {
-                    // console.log("Rx NOT inserted"); 
-                }
-            })
+        axios.post('/api/Rxs', {
+            rx_num: this.state.rx_num,
+            drug_name: this.state.drugName,
+            ndc: this.state.ndc,
+            refills: this.state.refills,
+            dispensed_qty: this.state.quantityDispensed,
+            sig: this.state.sig,
+            frequency: this.state.dosage,
+            perDay: this.state.doseInterval,
+            time_of_day: this.state.timeOfDay,
+            pharmacist: this.state.pharmacist,
+            pharmacy_number: this.state.pharmacyContact,
+            prescriber: this.state.prescriber,
+            prescriber_number: this.state.prescriberContact,
+            patient: this.state.patient,
+            PatientId: this.state.patientId
+        }).then(response => {
+            if (response !== null) {
+                // console.log("Rx inserted");
+                this.setState({ redirect: true })
+            } else {
+                // console.log("Rx NOT inserted"); 
+            }
+        })
     }
 
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to='/dashboard' />
+            // return <Redirect to='/dashboard' />
+            window.location.href = '/dashboard'
         }
 
         if (this.state.isLoggedIn === false) {
@@ -170,6 +173,7 @@ class AddRx extends Component {
                                     onChange={this.handleInputChange}
                                 >
                                     {optionItems}
+
                                 </select>
                                 <label htmlFor="rx_num" className="addRxFormLabel">Prescription Number</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="rx_num"

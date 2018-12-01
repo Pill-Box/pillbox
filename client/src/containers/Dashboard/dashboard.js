@@ -22,6 +22,7 @@ class Dashboard extends React.Component {
        }
 
     async componentDidMount() {
+        console.log("getting access string");
         let accessString = localStorage.getItem('JWT');
         // console.log(accessString);
         if (accessString == null) {
@@ -46,9 +47,8 @@ class Dashboard extends React.Component {
                         isLoggedIn: true
                     });
 
-                    console.log(response)
-                    console.log(this.state.userId)
-
+                    // console.log(response.data)
+                    // console.log(this.state.userId)
                     this.loadUser();
                 })
                 .catch(error => {
@@ -109,7 +109,7 @@ class Dashboard extends React.Component {
                 <div className="container">
                     <h1 id='clock'><Moment format='MMMM D, YYYY'>{this.props.dateToFormat}</Moment></h1>
                     <div className='row dashboard'>
-                        {console.log(this.state.patients)}
+                        {/* {console.log(this.state.patients)} */}
                         {this.state.patients.filter(patient => patient.id === this.state.patientId).map(patient => (
                             <RxModal
                                 show={this.state.show}
