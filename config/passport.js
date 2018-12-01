@@ -93,8 +93,7 @@ const opts = {
 
 // Passport JWT Section
 passport.use(
-  'jwt',
-  new JWTstrategy(opts, (jwt_payload, done) => {
+  'jwt', new JWTstrategy(opts, (jwt_payload, done) => {
     try {
       db.User.findOne({
         where: {

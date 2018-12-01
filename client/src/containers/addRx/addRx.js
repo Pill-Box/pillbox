@@ -62,7 +62,6 @@ class AddRx extends Component {
 
                     console.log(response.data)
                     console.log(this.state.userId)
-
                     this.loadPatient();
                 })
                 .catch(error => {
@@ -76,7 +75,7 @@ class AddRx extends Component {
     loadPatient = () => {
         axios.get('/api/user/patients/' + this.state.userId)
             .then(patientData => {
-                // console.log(patientData.data.Patients);
+                console.log(patientData.data.Patients);
                 if(!patientData) {
                     this.setState({
                         patients: patientData.data.Patients,
@@ -156,7 +155,8 @@ class AddRx extends Component {
 
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to='/dashboard' />
+            // return <Redirect to='/dashboard' />
+            window.location.href = '/dashboard'
         }
 
         if (this.state.isLoggedIn === false) {
@@ -182,6 +182,7 @@ class AddRx extends Component {
                                     onChange={this.handleInputChange}
                                 >
                                     {optionItems}
+
                                 </select>
                                 <label htmlFor="rx_num" className="addRxFormLabel">Prescription Number</label>
                                 <input type="text" className="form-control formFieldsStyleAddRx" id="rx_num"

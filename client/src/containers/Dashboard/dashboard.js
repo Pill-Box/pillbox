@@ -22,8 +22,9 @@ class Dashboard extends React.Component {
        }
 
     async componentDidMount() {
+        console.log("getting access string");
         let accessString = localStorage.getItem('JWT');
-        // console.log(accessString);
+        console.log(accessString);
         if (accessString == null) {
             this.setState({
                 error: true,
@@ -46,9 +47,8 @@ class Dashboard extends React.Component {
                         isLoggedIn: true
                     });
 
-                    console.log(response)
+                    console.log(response.data)
                     console.log(this.state.userId)
-
                     this.loadUser();
                 })
                 .catch(error => {
